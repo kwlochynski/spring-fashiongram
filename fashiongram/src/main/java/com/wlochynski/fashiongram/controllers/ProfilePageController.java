@@ -1,6 +1,7 @@
 package com.wlochynski.fashiongram.controllers;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,5 +28,15 @@ public class ProfilePageController {
 		User user = userService.findUserByEmail(userEmail);
 		model.addAttribute("user",user);
 		return "profile";
+	}
+	
+	@POST
+	@RequestMapping("editProfileDescription")
+	public String editProfileDescription(String description)
+	{
+		String userEmail = UserUtilites.getLoggedUser();
+		User user = userService.findUserByEmail(userEmail);
+		userService.updateUserDescription(description, user.getUserId());
+		return "redirect:/profile";
 	}
 }

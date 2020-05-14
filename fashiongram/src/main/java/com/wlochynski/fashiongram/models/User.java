@@ -40,6 +40,8 @@ public class User {
 	@NotNull
 	private String name;
 	
+	@Column(name = "description")
+	private String description;
 	
 	@Column(name = "active")
 	@NotNull
@@ -60,6 +62,14 @@ public class User {
 	
 	@Transient
 	private String comparePassword;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public int getUserId() {
 		return userId;

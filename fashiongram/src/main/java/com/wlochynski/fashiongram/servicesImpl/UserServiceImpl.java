@@ -70,4 +70,9 @@ public class UserServiceImpl implements UserService {
 		List<User> userList = userRepository.findAll();
 		return userList;
 	}
+
+	@Override
+	public void updateUserDescription(String description, int id) {
+		userRepository.updateUserDescription(description, id);
+	}
 }
