@@ -57,16 +57,22 @@
               <img class="productIcon" src="/resources/images/Icons/tshirtIcon.png" title="<s:message code="products.tshirtTitle"/>"><input name="tshirtUrl" class="inputProduct" type="text" placeholder="Link"> 
               </div>
               <div id="product">
-              <img class="productIcon" src="/resources/images/Icons/longSleevesIcon.png" title="<s:message code="products.longSleevesTitle"/>" ><input class="inputProduct" type="text" placeholder="Link">
+              <img class="productIcon" src="/resources/images/Icons/longSleevesIcon.png" title="<s:message code="products.longSleevesTitle"/>" ><input name="longSleeveUrl" class="inputProduct" type="text" placeholder="Link">
               </div>
               <div id="product">
-              <img class="productIcon" src="/resources/images/Icons/pantsIcon.png" title="<s:message code="products.pantsTitle"/>" style="height:30px; width:25px;margin-left:2.5px;margin-right:12.5px;"><input class="inputProduct" type="text" placeholder="Link">
+              <img class="productIcon" src="/resources/images/Icons/pantsIcon.png" title="<s:message code="products.pantsTitle"/>" style="height:30px; width:25px;margin-left:2.5px;margin-right:12.5px;"><input name="pantsUrl" class="inputProduct" type="text" placeholder="Link">
               </div>
               <div id="product">
-              <img class="productIcon" src="/resources/images/Icons/shoesIcon.png" title="<s:message code="products.shoesTitle"/>" style="height:20px;"><input class="inputProduct" type="text" placeholder="Link">
+              <img class="productIcon" src="/resources/images/Icons/shoesIcon.png" title="<s:message code="products.shoesTitle"/>" style="height:20px;"><input name="shoesUrl" class="inputProduct" type="text" placeholder="Link">
               </div>
               <div id="product">
-              <img class="productIcon" src="/resources/images/Icons/othersIcon.png" title="<s:message code="products.othersTitle"/>"><input class="inputProduct" type="text" placeholder="Link">
+              <img class="productIcon" src="/resources/images/Icons/othersIcon.png" title="<s:message code="products.othersTitle"/>"><input name="others1Url" class="inputProduct" type="text" placeholder="Link">
+              </div>
+              <div id="product">
+              <img class="productIcon" src="/resources/images/Icons/othersIcon.png" title="<s:message code="products.othersTitle"/>"><input name="others2Url" class="inputProduct" type="text" placeholder="Link">
+              </div>
+              <div id="product">
+              <img class="productIcon" src="/resources/images/Icons/othersIcon.png" title="<s:message code="products.othersTitle"/>"><input name="others3Url" class="inputProduct" type="text" placeholder="Link">
               </div>
             </div>
             <div id="addPhoto">

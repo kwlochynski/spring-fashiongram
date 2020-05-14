@@ -28,6 +28,24 @@ public class Post {
 	
 	@Column(name = "tshirtUrl")
 	private String tshirtUrl;
+	
+	@Column(name = "pantsUrl")
+	private String pantsUrl;
+	
+	@Column(name = "longSleeveUrl")
+	private String longSleeveUrl;
+	
+	@Column(name = "shoesUrl")
+	private String shoesUrl;
+	
+	@Column(name = "others1Url")
+	private String others1Url;
+	
+	@Column(name = "others2Url")
+	private String others2Url;
+	
+	@Column(name = "others3Url")
+	private String others3Url;
 
 	public int getId() {
 		return id;
@@ -67,6 +85,54 @@ public class Post {
 
 	public void setTshirtUrl(String tshirtUrl) {
 		this.tshirtUrl = tshirtUrl;
+	}
+
+	public String getPantsUrl() {
+		return pantsUrl;
+	}
+
+	public void setPantsUrl(String pantsUrl) {
+		this.pantsUrl = pantsUrl;
+	}
+
+	public String getLongSleeveUrl() {
+		return longSleeveUrl;
+	}
+
+	public void setLongSleeveUrl(String longSleeveUrl) {
+		this.longSleeveUrl = longSleeveUrl;
+	}
+
+	public String getShoesUrl() {
+		return shoesUrl;
+	}
+
+	public void setShoesUrl(String shoesUrl) {
+		this.shoesUrl = shoesUrl;
+	}
+
+	public String getOthers1Url() {
+		return others1Url;
+	}
+
+	public void setOthers1Url(String others1Url) {
+		this.others1Url = others1Url;
+	}
+
+	public String getOthers2Url() {
+		return others2Url;
+	}
+
+	public void setOthers2Url(String others2Url) {
+		this.others2Url = others2Url;
+	}
+
+	public String getOthers3Url() {
+		return others3Url;
+	}
+
+	public void setOthers3Url(String others3Url) {
+		this.others3Url = others3Url;
 	}
 	
 	
