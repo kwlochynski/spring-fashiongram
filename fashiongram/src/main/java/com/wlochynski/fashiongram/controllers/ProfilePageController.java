@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wlochynski.fashiongram.models.Post;
 import com.wlochynski.fashiongram.models.User;
+import com.wlochynski.fashiongram.services.PostService;
 import com.wlochynski.fashiongram.services.UserService;
 import com.wlochynski.fashiongram.utilites.UserUtilites;
 
@@ -29,6 +32,9 @@ public class ProfilePageController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	PostService postService;
+	
 	@GET
 	@RequestMapping("profile")
 	public String showProfilePage(Model model)
@@ -36,8 +42,14 @@ public class ProfilePageController {
 		String userEmail = UserUtilites.getLoggedUser();
 		User user = userService.findUserByEmail(userEmail);
 		model.addAttribute("user",user);
+		
+		//get all user posts
+		List<Post> listOfUserPosts = postService.findAllByUserId(user.getUserId());
+		model.addAttribute("listOfUserPosts", listOfUserPosts);
+		
 		return "profile";
 	}
+	
 	
 	@POST
 	@RequestMapping("editProfileDescription")

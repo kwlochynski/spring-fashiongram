@@ -51,7 +51,17 @@ public class UploadImageController implements HandlerExceptionResolver {
         
     	//create a new, unique name of image
         String fileName = file.getOriginalFilename();
-        int imageNumber = postService.findFirstByOrderByIdDesc().getId() + 1;
+        int imageNumber;
+        if(postService.findFirstByOrderByIdDesc() != null)
+        {
+        	imageNumber = postService.findFirstByOrderByIdDesc().getId() + 1;
+        }
+        else 
+        {
+        	imageNumber = 1;
+        }
+        
+
         String newUniqName = imageNumber + fileName.substring(fileName.lastIndexOf("."));
         
         try {

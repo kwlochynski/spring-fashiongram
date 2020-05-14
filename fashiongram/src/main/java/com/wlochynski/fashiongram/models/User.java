@@ -44,7 +44,7 @@ public class User {
 	private String description;
 	
 	@Column(name = "avatarUrl")
-	private String avatarUrl;
+	private String avatarUrl = "avatar.png";
 	
 	@Column(name = "active")
 	@NotNull
