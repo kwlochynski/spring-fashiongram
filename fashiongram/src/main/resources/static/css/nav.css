@@ -1,0 +1,15 @@
+#nav-placeholder{
+  z-index:1;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top:0;
+  right: 0;
+}
+#nav-placeholder li {
+  display: inline;
+}
+#nav_links img{
+  margin-right: 30px;
+  height:40px;
+}

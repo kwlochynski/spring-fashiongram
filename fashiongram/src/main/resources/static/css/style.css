@@ -1,0 +1,201 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color:#252525;
+}
+#box{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  height: 80vh;
+  text-align: center;
+}
+
+#photo{
+  height:100%;
+  -webkit-box-shadow: 0px 0px 50px 5px rgba(0,0,0,0.85);
+  -moz-box-shadow: 0px 0px 50px 5px rgba(0,0,0,0.85);
+  box-shadow: 0px 0px 50px 5px rgba(0,0,0,0.85);
+}
+#photo img {
+  height:100%;
+}
+.addPhotoHover{
+  cursor: pointer;
+}
+#photodetails{
+  text-align: left;
+  height:100%;
+  color:white;
+  width:20vw;
+  background-color: #202020;
+  color: #ffffff;
+  font-size: 11px;
+  overflow: auto;
+  -webkit-box-shadow: 0px 0px 50px 5px rgba(0,0,0,0.85);
+  -moz-box-shadow: 0px 0px 50px 5px rgba(0,0,0,0.85);
+  box-shadow: 0px 0px 50px 5px rgba(0,0,0,0.85);
+}
+
+#userbox{
+  margin-top:30px;
+  text-align: center;
+}
+
+#avatar{
+  height: 50px;
+  margin-right: 2px;
+  vertical-align: middle;
+}
+#nickname{
+  vertical-align: middle;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  color:white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#description{
+  margin:1vw;
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  color:white;
+}
+#descriptionInput{
+  width: 99%;
+  padding-left: 1%;
+  resize:vertical;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+#actions{
+  display: table;
+  margin: auto;
+  margin-top:20px;
+
+}
+.productIcon{
+  margin-right: 10px;
+  vertical-align: middle;
+  width:30px;
+}
+#products{
+  margin:5px;
+}
+#product{
+  margin:2vh;
+}
+.productLink{
+  font-size:15px;
+  font-weight: bold;
+  vertical-align: middle;
+  text-decoration: none;
+  color:white;
+}
+.inputProduct{
+  padding-left: 1%;
+  width: calc(95% - 40px);
+  resize:vertical;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.actionelement{
+  margin: 0 1vw;
+  height: 35px;
+  cursor: pointer;
+}
+#comments{
+  margin:10px;
+  margin-top: 0px;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  color:white;
+  line-height: 25px;
+}
+.comment{
+  margin-bottom: 30px;
+}
+#commentAvatar{
+  height: 30px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+#commentDate{
+color:gray;
+font-size:10px;
+margin-left:10px;
+}
+
+#addComment{
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  margin-top:20px;
+}
+
+#addPhoto{
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  margin-top:20px;
+}
+
+#addCommentButton{
+  width:50%;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  margin-top: 10px;
+  background-color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color:black;
+  font-weight:600;
+  border-width: 0px;
+}
+
+#addCommentButton:hover{
+  background-color: #131313;
+  color:white;
+  font-weight: normal;
+}
+
+#commentInput{
+  font-family: 'Raleway', sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size:15px;
+  width: 80%;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+
+@media screen and (max-width:960px){
+  #box{
+    flex-direction:column;
+  }
+  #photo{
+    width: 90vw;
+    max-width: 90vw;
+  }
+  #photodetails{
+    min-height: 300px;
+    height: 50%;
+    max-height: 50%;
+    width: 90vw;
+    position:relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%)
+  }
+  .actionelement{
+    margin: 0 10vw;
+  }
+}
