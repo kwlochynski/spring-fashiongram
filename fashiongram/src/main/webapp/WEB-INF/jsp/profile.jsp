@@ -37,10 +37,13 @@
     </ul>
   </div>
 
-<div id="profileDetails" style="background-color:red;">
+<div id="profileDetails">
+<sf:form action="/editProfileAvatar" method="post" enctype="multipart/form-data">
   <div class="profileDetail" id="profileAvatar">
-    <img src="/resources/images/Icons/avatar.png">
+  	<img style="cursor:pointer" id="uploadedImage" title="<s:message code="post.add.photo"/>" src="uploads/${user.avatarUrl }" class="addPhotoHover" onclick="document.getElementById('file').click();">
+	<input type="file" style="display:none;" id="file" name="fileupload" accept="image/*"  onchange="this.form.submit()">
   </div>
+</sf:form>
   <div class="profileDetail">
     <div>
       ${user.name }
@@ -57,7 +60,8 @@
  <b>Opis: </b>${user.description }
  </p>
 </div>
-<sf:form action="/editProfileDescription" method="post" enctype="multipart/form-data" modelAttribute="description">
+
+<sf:form action="/editProfileDescription" method="post" enctype="multipart/form-data">
 	<div style="display:none;" id="editProfileDescription">
 			<textarea name="description" id="descriptionInput" placeholder="Opis" rows="5" style="width:600px;"></textarea>
 	 		<button type="submit" style="margin-top:10px;" class="roundButton">Zapisz</button>

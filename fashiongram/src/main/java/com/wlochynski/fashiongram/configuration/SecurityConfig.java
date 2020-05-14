@@ -47,6 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/").and().exceptionHandling().accessDeniedPage("/denied");
 	}
 	public void configure(WebSecurity webSec) throws Exception {
-		webSec.ignoring().antMatchers("/resources/**", "/statics/**", "/css/**", "/js/**", "/images/**", "/incl/**");
+		webSec.ignoring().antMatchers("/resources/**", "/statics/**", "/css/**", "/js/**", "/images/**", "/incl/**", "/uploads/**");
 	}
 }

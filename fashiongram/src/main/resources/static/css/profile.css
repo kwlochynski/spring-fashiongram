@@ -1,133 +1,156 @@
-body{
-  margin:0px;
-  padding: 0px;
-  background-color: #252525;
-  font-family: 'Raleway', sans-serif;
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #252525;
+	font-family: 'Raleway', sans-serif;
 }
-#profileDetails{
-  color:white;
-  font-size: 30px;
-  width:600px;
-  margin: 100px auto 0 auto;
-  display: flex;
+
+#profileDetails {
+	color: white;
+	font-size: 30px;
+	width: 600px;
+	margin: 100px auto 0 auto;
+	display: flex;
 }
-.profileDetail{
-  margin: auto;
-  text-align: center;
+
+.profileDetail {
+	margin: auto;
+	text-align: center;
 }
-#description{
-  color:white;
-  width:600px;
-  margin: 0 auto;
-  margin-top:10px;
-  color:white;
-  font-size: 20px;
-  text-align: left;
-  margin-bottom: 100px;
-}
-#description p{
-  font-size: 20px;
-  margin:0;
-  margin-left: 20px;
-}
-#editProfileDescription{
-	width:600px;
-	margin:0 auto;
-	text-align:center;
+
+#description {
+	color: white;
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 10px;
+	color: white;
+	font-size: 20px;
+	text-align: left;
 	margin-bottom: 100px;
-	margin-top:-100px;
-}
-#profileAvatar img{
-  width: 200px;
-}
-.roundButton{
-  height: 30px;
-  width: auto;
-  padding: 0 20px;
-  color:white;
-  background:none;
-  border: 1px solid white;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  font-size: 17px;
-}
-.roundButton:hover{
-  transition: .6s;
-  color:black;
-  background-color: white;
-}
-#imageContainer{
-  margin: 50px 0;
-  display:grid;
-  grid-template-columns: repeat(3,15vw);
-  justify-content: center;
-  grid-gap:20px;
-  grid-row-gap:15;
-  text-align: center;
-}
-.image img{
-  object-position: 50% 10%;
-  object-fit: cover;
-  width:100%;
-  height: 15vw;
 }
 
-.imageText{
-  display: none;
-  font-size: 14px;
-  position: relative;
-  height: 100%;
-  color:white;
-  margin-top: calc(-15vw - 4px);
-  background: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  text-align: center;
+#description p {
+	font-size: 20px;
+	margin: 0;
+	margin-left: 20px;
 }
-.counter img{
-  max-height: 5vw;
-  width: 5vw;
+
+#editProfileDescription {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 100px;
+	margin-top: -100px;
 }
-.counter{
-  width: 50%;
-  float: left;
-  margin:auto;
-  margin-top: calc(50% - 2.5vw);
+
+#profileAvatar {
+
 }
+
+#profileAvatar img {
+	border-radius: 50%;
+	object-position: 50% 10%;
+	object-fit: cover;
+	width: 150px;
+	height: 150px;
+}
+
+.roundButton {
+	height: 30px;
+	width: auto;
+	padding: 0 20px;
+	color: white;
+	background: none;
+	border: 1px solid white;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	font-size: 17px;
+}
+
+.roundButton:hover {
+	transition: .6s;
+	color: black;
+	background-color: white;
+}
+
+#imageContainer {
+	margin: 50px 0;
+	display: grid;
+	grid-template-columns: repeat(3, 15vw);
+	justify-content: center;
+	grid-gap: 20px;
+	grid-row-gap: 15;
+	text-align: center;
+}
+
+.image img {
+	object-position: 50% 10%;
+	object-fit: cover;
+	width: 100%;
+	height: 15vw;
+}
+
+.imageText {
+	display: none;
+	font-size: 14px;
+	position: relative;
+	height: 100%;
+	color: white;
+	margin-top: calc(-15vw - 4px);
+	background: rgba(0, 0, 0, 0.7);
+	justify-content: center;
+	text-align: center;
+}
+
+.counter img {
+	max-height: 5vw;
+	width: 5vw;
+}
+
+.counter {
+	width: 50%;
+	float: left;
+	margin: auto;
+	margin-top: calc(50% - 2.5vw);
+}
+
 .counter:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.counter p{
-  margin: 0;
-  font-size: 2vw;
-  font-weight: bold;
-}
-.image img:hover + .imageText{
-  transition: 0.5s;
-  display: block;
+	content: "";
+	display: table;
+	clear: both;
 }
 
-@media screen and (max-width:960px){
-  #imageContainer{
-    grid-template-columns: repeat(2,46vw);
-  }
-  .image img{
-    height: 46vw;
-  }
-  .imageText{
-    height: 100%;
-    margin-top: calc(-46vw - 4px);
-  }
-  .counter img{
-    max-height: 15vw;
-    width: 15vw;
-  }
-  .counter{
-    margin-top: calc(50% - 7.5vw);
-  }
-  .counter p{
-    font-size: 4vw;
-  }
+.counter p {
+	margin: 0;
+	font-size: 2vw;
+	font-weight: bold;
+}
+
+.image img:hover+.imageText {
+	transition: 0.5s;
+	display: block;
+}
+
+@media screen and (max-width:960px) {
+	#imageContainer {
+		grid-template-columns: repeat(2, 46vw);
+	}
+	.image img {
+		height: 46vw;
+	}
+	.imageText {
+		height: 100%;
+		margin-top: calc(-46vw - 4px);
+	}
+	.counter img {
+		max-height: 15vw;
+		width: 15vw;
+	}
+	.counter {
+		margin-top: calc(50% - 7.5vw);
+	}
+	.counter p {
+		font-size: 4vw;
+	}
 }

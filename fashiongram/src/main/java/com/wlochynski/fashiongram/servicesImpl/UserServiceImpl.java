@@ -75,4 +75,9 @@ public class UserServiceImpl implements UserService {
 	public void updateUserDescription(String description, int id) {
 		userRepository.updateUserDescription(description, id);
 	}
+
+	@Override
+	public void updateUserAvatarUrl(String avatarUrl, int id) {
+		userRepository.updateUserAvatarUrl(avatarUrl, id);
+	}
 }

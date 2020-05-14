@@ -43,6 +43,9 @@ public class User {
 	@Column(name = "description")
 	private String description;
 	
+	@Column(name = "avatarUrl")
+	private String avatarUrl;
+	
 	@Column(name = "active")
 	@NotNull
 	private int active;
@@ -150,6 +153,12 @@ public class User {
 	public void setComparePassword(String comparePassword) {
 		this.comparePassword = comparePassword;
 	}
-	
-	
+
+	public String getAvatarUrl() {
+		return avatarUrl;
+	}
+
+	public void setAvatarUrl(String avatarUrl) {
+		this.avatarUrl = avatarUrl;
+	}
 }
