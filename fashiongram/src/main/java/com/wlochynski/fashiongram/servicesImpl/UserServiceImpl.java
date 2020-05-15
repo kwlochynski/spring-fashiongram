@@ -19,7 +19,7 @@ import com.wlochynski.fashiongram.services.UserService;
 
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements UserService {
+ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -79,5 +79,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUserAvatarUrl(String avatarUrl, int id) {
 		userRepository.updateUserAvatarUrl(avatarUrl, id);
+	}
+
+	@Override
+	public List<User> findAllById(List<Integer> userIds) {
+		List<User> userList = userRepository.findAllById(userIds);
+		return userList;
 	}
 }

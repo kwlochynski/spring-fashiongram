@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "post")
@@ -46,6 +47,9 @@ public class Post {
 	
 	@Column(name = "others3Url")
 	private String others3Url;
+	
+	@Transient
+	private String postedUserAvatar;
 
 	public int getId() {
 		return id;
@@ -133,6 +137,14 @@ public class Post {
 
 	public void setOthers3Url(String others3Url) {
 		this.others3Url = others3Url;
+	}
+
+	public String getPostedUserAvatar() {
+		return postedUserAvatar;
+	}
+
+	public void setPostedUserAvatar(String postedUserAvatar) {
+		this.postedUserAvatar = postedUserAvatar;
 	}
 	
 	

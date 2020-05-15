@@ -36,14 +36,17 @@
 		<ul id="nav_links">
 			<li><a href="index"><img
 					src="/resources/images/Icons/home.png"></a></li>
+			<li><a href="discover"><img
+					src="/resources/images/Icons/discoverIcon.png"></a></li>
 			<li><a href="addPost"><img
 					src="/resources/images/Icons/plus.png"></a></li>
 			<li><a href="profile"><img
 					src="/resources/images/Icons/avatar.png"></a></li>
+
 		</ul>
 	</div>
 	<div id="profileDetails">
-	
+
 		<sf:form action="/editProfileAvatar" method="post"
 			enctype="multipart/form-data">
 			<div class="profileDetail" id="profileAvatar">
@@ -55,7 +58,7 @@
 					accept="image/*" onchange="this.form.submit()">
 			</div>
 		</sf:form>
-		
+
 		<div class="profileDetail">
 			<div>${user.name }</div>
 			<div class="profileDetail">
@@ -73,7 +76,7 @@
 				onclick="showEditDescription()"> <b>Opis: </b>${user.description }
 		</p>
 	</div>
-	
+
 	<sf:form action="/editProfileDescription" method="post"
 		enctype="multipart/form-data">
 		<div style="display: none;" id="editProfileDescription">
@@ -82,7 +85,7 @@
 			<button type="submit" style="margin-top: 10px;" class="roundButton">Zapisz</button>
 		</div>
 	</sf:form>
-	
+
 	<div id="imageContainer">
 		<c:forEach varStatus="loop" var="post" items="${listOfUserPosts }">
 			<div class="image">

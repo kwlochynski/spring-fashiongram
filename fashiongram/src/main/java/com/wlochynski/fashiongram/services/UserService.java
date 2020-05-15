@@ -13,5 +13,6 @@ public interface UserService {
 	public void updateUserProfile(String newName, String newEmail, int id);
 	public void updateUserDescription(String description, int id);
 	public void updateUserAvatarUrl(String avatarUrl, int id);
+	public List<User> findAllById(List<Integer> userIds);
 	public List<User> findAll();
 }
