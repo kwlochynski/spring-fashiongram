@@ -20,25 +20,26 @@
 	rel="stylesheet">
 
 <script>
-	var inputComment;
-	var inputCommentParent;
-	window.onload = function() {
-		inputComment = document.getElementById("addComment");
-		inputCommentParent = document.getElementById("photodetails");
-		inputCommentParent.removeChild(document.getElementById("addComment"));
-	};
+	/* 	var inputComment;
+	 var inputCommentParent;
+	 window.onload = function() {
+	 inputComment = document.getElementById("addComment");
+	 inputCommentParent = document.getElementById("photodetails");
+	 inputCommentParent.removeChild(document.getElementById("addComment"));
+	 };
 
-	function showInputComment() {
-		if (document.getElementById("addComment")) {
-			inputCommentParent.removeChild(document
-					.getElementById("addComment"));
-		} else {
-			inputCommentParent.insertBefore(inputComment, document
-					.getElementById("comments"));
-		}
+	 function showInputComment() {
+	 if (document.getElementById("addComment")) {
+	 inputCommentParent.removeChild(document
+	 .getElementById("addComment"));
+	 } else {
+	 inputCommentParent.insertBefore(inputComment, document
+	 .getElementById("comments"));
+	 }
 
-	}
+	 } */
 </script>
+
 </head>
 
 <body>
@@ -98,7 +99,8 @@
 						<div id="product">
 							<img class="productIcon"
 								src="/resources/images/Icons/pantsIcon.png"
-								title="<s:message code="products.pantsTitle"/>"><a
+								title="<s:message code="products.pantsTitle"/>"
+								style="height: 30px; width: 25px; margin-left: 2.5px; margin-right: 12.5px;"><a
 								class="productLink" href="${post.pantsUrl }">${post.pantsUrl }</a>
 						</div>
 					</c:if>
@@ -145,10 +147,12 @@
 						src="/resources/images/Icons/reportIcon.png" class="actionelement">
 
 				</div>
+				<sf:form action="/addComment/${post.id }" method="post" >
 				<div id="addComment">
-					<input id="commentInput" placeholder="Treść komentarza" type="text">
-					<button id="addCommentButton">Dodaj komentarz</button>
+					<input name="commentContent" id="commentInput" placeholder="Treść komentarza" type="text">
+					<button type="submit" id="addCommentButton">Dodaj komentarz</button>
 				</div>
+				</sf:form>
 				<div id="comments">
 					<p>Komentarze:</p>
 					<div class="comment">
