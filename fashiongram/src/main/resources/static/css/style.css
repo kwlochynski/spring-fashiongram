@@ -4,7 +4,7 @@ body {
 	background-color: #252525;
 }
 
-#box {
+.box {
 	display: flex;
 	justify-content: center;
 	margin: 0 auto;
@@ -124,7 +124,7 @@ body {
 	cursor: pointer;
 }
 
-#comments {
+.comments {
 	margin: 10px;
 	margin-top: 0px;
 	font-size: 15px;

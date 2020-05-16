@@ -37,7 +37,28 @@
 	 .getElementById("comments"));
 	 }
 
-	 } */
+	 } 
+	 */
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+<script>
+function addComment(postId) {
+	var form = $('#addCommentForm'+postId);
+	var commentContent = $('#commentContent'+postId).val();
+		$
+			.ajax({
+					type : "post",
+					url : form.attr('action'),
+					data : form.serialize(),
+					success : function() {
+					$(
+					"<div class='comment'><img id='commentAvatar' src='/uploads/${user.avatarUrl }'><a id='commentText'> "+ commentContent +" </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
+					.prependTo('#comments'+postId);
+					}
+				})
+			};
 </script>
 
 </head>
@@ -57,7 +78,7 @@
 	</div>
 
 	<c:forEach varStatus="loop" var="post" items="${newPosts }">
-		<div id="box">
+		<div class="box" id="post${post.id }">
 			<div id="photo">
 				<img src="/uploads/${post.photoName }">
 			</div>
@@ -147,52 +168,33 @@
 						src="/resources/images/Icons/reportIcon.png" class="actionelement">
 
 				</div>
-				<sf:form action="/addComment/${post.id }" method="post" >
-				<div id="addComment">
-					<input name="commentContent" id="commentInput" placeholder="Treść komentarza" type="text">
-					<button type="submit" id="addCommentButton">Dodaj komentarz</button>
-				</div>
-				</sf:form>
-				<div id="comments">
-					<p>Komentarze:</p>
+
+				<form id="addCommentForm${post.id }"
+					action="/addComment/${post.id }" method="post">
+					<div id="addComment">
+						<input id="commentContent${post.id }" name="commentContent"
+							class="commentInput" placeholder="Treść komentarza" type="text">
+						<input id="addCommentButton" type="button" value="Dodaj komentarz"
+							onClick="addComment(${post.id})">
+					</div>
+				</form>
+
+				<p>Komentarze:</p>
+				<div class="comments" id="comments${post.id }">
 					<div class="comment">
 						<img id="commentAvatar" src="/resources/images/Icons/avatar.png">
 						<a id="commentText">Co ona zrobila </a><a id="commentDate">19.02.2012r</a>
-					</div>
-					<div class="comment">
-						<img id="commentAvatar" src="/resources/images/Icons/avatar.png">
-						<a id="commentText">Lorem Ipsum jest tekstem stosowanym jako
-							przykładowy wypełniacz w przemyśle poligraficznym. </a><a
-							id="commentDate">19.02.2012r</a>
-					</div>
-					<div class="comment">
-						<img id="commentAvatar" src="/resources/images/Icons/avatar.png">
-						<a id="commentText">Lorem Ipsum jest tekstem stosowanym jako
-							przykładowy wypełniacz w przemyśle poligraficznym. </a><a
-							id="commentDate">19.02.2012r</a>
-					</div>
-					<div class="comment">
-						<img id="commentAvatar" src="/resources/images/Icons/avatar.png">
-						<a id="commentText">Lorem Ipsum jest tekstem stosowanym jako
-							przykładowy wypełniacz w przemyśle poligraficznym. </a><a
-							id="commentDate">19.02.2012r</a>
-					</div>
-					<div class="comment">
-						<img id="commentAvatar" src="/resources/images/Icons/avatar.png">
-						<a id="commentText">Lorem Ipsum jest tekstem stosowanym jako
-							przykładowy wypełniacz w przemyśle poligraficznym. </a><a
-							id="commentDate">19.02.2012r</a>
-					</div>
-					<div class="comment">
-						<img id="commentAvatar" src="/resources/images/Icons/avatar.png">
-						<a id="commentText">Lorem Ipsum jest tekstem stosowanym jako
-							przykładowy wypełniacz w przemyśle poligraficznym. </a><a
-							id="commentDate">19.02.2012r</a>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</c:forEach>
+
+
+
+
+
+	<button id="addDupa">DAAAAAA</button>
 </body>
 </html>

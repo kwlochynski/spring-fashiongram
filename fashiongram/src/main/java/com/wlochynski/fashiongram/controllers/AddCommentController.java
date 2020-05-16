@@ -24,7 +24,7 @@ public class AddCommentController {
 
 	@POST
 	@RequestMapping("addComment/{postId}")
-	public void addComment(@PathVariable int postId, String commentContent) {
+	public String addComment(@PathVariable int postId, String commentContent) {
 		// get user
 		String userEmail = UserUtilites.getLoggedUser();
 		User user = userService.findUserByEmail(userEmail);
@@ -38,6 +38,7 @@ public class AddCommentController {
 		// save comment to db
 		commentService.saveComment(comment);
 
+		return "redirect:/discover";
 	}
 
 }
