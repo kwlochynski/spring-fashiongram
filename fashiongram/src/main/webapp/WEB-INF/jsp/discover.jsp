@@ -81,49 +81,56 @@
 					<c:if test="${post.tshirtUrl ne '' }">
 						<div id="product">
 							<img class="productIcon"
-								src="/resources/images/Icons/tshirtIcon.png"><a
+								src="/resources/images/Icons/tshirtIcon.png"
+								title="<s:message code="products.tshirtTitle"/>"><a
 								class="productLink" href="${post.tshirtUrl }">${post.tshirtUrl }</a>
 						</div>
 					</c:if>
 					<c:if test="${post.longSleeveUrl ne '' }">
 						<div id="product">
 							<img class="productIcon"
-								src="/resources/images/Icons/longSleevesIcon.png"><a
+								src="/resources/images/Icons/longSleevesIcon.png"
+								title="<s:message code="products.longSleevesTitle"/>"><a
 								class="productLink" href="${post.longSleeveUrl }">${post.longSleeveUrl }</a>
 						</div>
 					</c:if>
 					<c:if test="${post.pantsUrl ne '' }">
 						<div id="product">
 							<img class="productIcon"
-								src="/resources/images/Icons/pantsIcon.png"><a
+								src="/resources/images/Icons/pantsIcon.png"
+								title="<s:message code="products.pantsTitle"/>"><a
 								class="productLink" href="${post.pantsUrl }">${post.pantsUrl }</a>
 						</div>
 					</c:if>
 					<c:if test="${post.shoesUrl ne '' }">
 						<div id="product">
 							<img class="productIcon"
-								src="/resources/images/Icons/shoesIcon.png"><a
+								src="/resources/images/Icons/shoesIcon.png"
+								title="<s:message code="products.shoesTitle"/>"><a
 								class="productLink" href="${post.shoesUrl }">${post.shoesUrl }</a>
 						</div>
 					</c:if>
 					<c:if test="${post.others1Url ne '' }">
 						<div id="product">
 							<img class="productIcon"
-								src="/resources/images/Icons/othersIcon.png"><a
+								src="/resources/images/Icons/othersIcon.png"
+								title="<s:message code="products.othersTitle"/>"><a
 								class="productLink" href="${post.others1Url}">${post.others1Url}</a>
 						</div>
 					</c:if>
 					<c:if test="${post.others2Url ne '' }">
 						<div id="product">
 							<img class="productIcon"
-								src="/resources/images/Icons/othersIcon.png"><a
+								src="/resources/images/Icons/othersIcon.png"
+								title="<s:message code="products.othersTitle"/>"><a
 								class="productLink" href="${post.others2Url }">${post.others2Url }</a>
 						</div>
 					</c:if>
 					<c:if test="${post.others3Url ne '' }">
 						<div id="product">
 							<img class="productIcon"
-								src="/resources/images/Icons/othersIcon.png"><a
+								src="/resources/images/Icons/othersIcon.png"
+								title="<s:message code="products.othersTitle"/>"><a
 								class="productLink" href="${post.others3Url }">${post.others3Url }</a>
 						</div>
 					</c:if>
