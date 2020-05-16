@@ -69,7 +69,7 @@
 									src="uploads/${user.avatarUrl }"></a>
 							</div>
 							<div>
-							<a id="nickname" href="profile/${user.userId }">${user.name }</a>
+								<a id="nickname" href="profile/${user.userId }">${user.name }</a>
 							</div>
 						</c:if>
 					</c:forEach>
@@ -78,21 +78,56 @@
 					<p>${post.description }</p>
 				</div>
 				<div id="products">
-					<div id="product">
-						<img class="productIcon"
-							src="/resources/images/Icons/tshirtIcon.png"><a
-							class="productLink" href="zara.com/action1231975ahr-0123-1235">zara.com/action1231975ahr-0123-12351231231dasda1231</a>
-					</div>
-					<div id="product">
-						<img class="productIcon"
-							src="/resources/images/Icons/tshirtIcon.png"><a
-							class="productLink" href="zara.com">zara.com</a>
-					</div>
-					<div id="product">
-						<img class="productIcon"
-							src="/resources/images/Icons/tshirtIcon.png"><a
-							class="productLink" href="zara.com">zara.com</a>
-					</div>
+					<c:if test="${post.tshirtUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/tshirtIcon.png"><a
+								class="productLink" href="${post.tshirtUrl }">${post.tshirtUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.longSleeveUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/longSleevesIcon.png"><a
+								class="productLink" href="${post.longSleeveUrl }">${post.longSleeveUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.pantsUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/pantsIcon.png"><a
+								class="productLink" href="${post.pantsUrl }">${post.pantsUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.shoesUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/shoesIcon.png"><a
+								class="productLink" href="${post.shoesUrl }">${post.shoesUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.others1Url ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/othersIcon.png"><a
+								class="productLink" href="${post.others1Url}">${post.others1Url}</a>
+						</div>
+					</c:if>
+					<c:if test="${post.others2Url ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/othersIcon.png"><a
+								class="productLink" href="${post.others2Url }">${post.others2Url }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.others3Url ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/othersIcon.png"><a
+								class="productLink" href="${post.others3Url }">${post.others3Url }</a>
+						</div>
+					</c:if>
+
 				</div>
 				<div id="actions">
 

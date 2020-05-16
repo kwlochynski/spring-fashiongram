@@ -29,7 +29,7 @@ public class DiscoverPageController {
 	public String showDiscoverPage(Model model)
 	{
 		
-		List<Post> newPosts = postService.findAll();
+		List<Post> newPosts = postService.findAllByOrderByIdDesc();
 		model.addAttribute("newPosts", newPosts);
 		List<Integer> userIds = new ArrayList<Integer>();
 		for(Post p : newPosts)

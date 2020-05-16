@@ -10,4 +10,5 @@ public interface PostService {
 	public Post findFirstByOrderByIdDesc();
 	public List<Post> findAllByUserId(Integer userId);
 	public List<Post> findAll();
+	public List<Post> findAllByOrderByIdDesc();
 }
