@@ -13,3 +13,9 @@
   margin-right: 30px;
   height:40px;
 }
+.navAvatar{
+	border-radius: 50%;
+	object-position: 50% 10%;
+	object-fit: cover;
+	width:40px;
+}

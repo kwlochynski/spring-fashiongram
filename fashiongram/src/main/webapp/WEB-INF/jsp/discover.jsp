@@ -72,8 +72,8 @@ function addComment(postId) {
 					src="/resources/images/Icons/discoverIcon.png"></a></li>
 			<li><a href="addPost"><img
 					src="/resources/images/Icons/plus.png"></a></li>
-			<li><a href="profile"><img
-					src="/resources/images/Icons/avatar.png"></a></li>
+			<li><a href="profile"><img class="navAvatar"
+					src="/uploads/${user.avatarUrl }"></a></li>
 		</ul>
 	</div>
 
