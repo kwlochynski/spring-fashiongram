@@ -57,8 +57,13 @@
 			</div>
 			<div id="photodetails">
 				<div id="userbox">
-					<img id="avatar" src="/resources/images/Icons/avatar.png"></img> <a
-						id="nickname" href="profile/Maffashion">Maffashion</a>
+					<div>
+						<img id="avatar" src="/uploads/${user.avatarUrl }"></img>
+					</div>
+					<div>
+						<a id="nickname" href="profile/${user.userId }">${user.name }</a>
+					</div>
+
 				</div>
 				<div id="description">
 					<p>Opis:</p>
