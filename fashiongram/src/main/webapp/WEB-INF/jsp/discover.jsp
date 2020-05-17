@@ -54,7 +54,7 @@ function addComment(postId) {
 					data : form.serialize(),
 					success : function() {
 					$(
-					"<div class='comment'><img id='commentAvatar' src='/uploads/${user.avatarUrl }'><a id='commentText'> "+ commentContent +" </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
+					"<div class='comment'><img class='commentAvatar' src='/uploads/${user.avatarUrl }'><a id='commentText'> "+ commentContent +" </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
 					.prependTo('#comments'+postId);
 					}
 				})
@@ -178,23 +178,29 @@ function addComment(postId) {
 							onClick="addComment(${post.id})">
 					</div>
 				</form>
-
-				<p>Komentarze:</p>
+				
+				<p class="commentsText">Komentarze:</p>
 				<div class="comments" id="comments${post.id }">
-					<div class="comment">
-						<img id="commentAvatar" src="/resources/images/Icons/avatar.png">
-						<a id="commentText">Co ona zrobila </a><a id="commentDate">19.02.2012r</a>
-					</div>
+					<c:forEach varStatus="loop" var="comment" items="${commentList }">
+						<c:if test="${post.id eq comment.postId }">
+							<div class="comment">
+								<c:forEach varStatus="loop" var="commentUser"
+									items="${commentUserList }">
+									<c:if test="${comment.userId eq commentUser.userId }">
+										<img class="commentAvatar"
+											src="/uploads/${commentUser.avatarUrl }">
+										<a class="commentText">${comment.content }</a>
+										<a id="commentDate">${comment.addDate.time }</a>
+									</c:if>
+								</c:forEach>
+							</div>
+						</c:if>
+					</c:forEach>
 				</div>
+
 
 			</div>
 		</div>
 	</c:forEach>
-
-
-
-
-
-	<button id="addDupa">DAAAAAA</button>
 </body>
 </html>

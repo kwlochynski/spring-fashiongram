@@ -135,9 +135,14 @@ body {
 
 .comment {
 	margin-bottom: 30px;
+	word-wrap: break-word;
 }
 
-#commentAvatar {
+.commentAvatar {
+	border-radius: 50%;
+	object-position: 50% 10%;
+	object-fit: cover;
+	width: 30px;
 	height: 30px;
 	margin-right: 10px;
 	vertical-align: middle;
@@ -183,7 +188,7 @@ body {
 	font-weight: normal;
 }
 
-#commentInput {
+.commentInput {
 	font-family: 'Raleway', sans-serif;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -194,8 +199,14 @@ body {
 	border-radius: 50px;
 }
 
+.commentsText{
+	margin-left:10px;
+	font-size:15px;
+	font-family: 'Raleway', sans-serif;
+}
+
 @media screen and (max-width:960px) {
-	#box {
+	.box {
 		flex-direction: column;
 	}
 	#photo {

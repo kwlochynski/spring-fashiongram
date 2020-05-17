@@ -47,7 +47,7 @@
 
 	<sf:form action="/upload" method="post" enctype="multipart/form-data"
 		modelAttribute="uploadPost">
-		<div id="box">
+		<div class="box">
 			<div id="photo">
 				<img id="uploadedImage" title="<s:message code="post.add.photo"/>"
 					src="/resources/images/Photos/addPhoto.png" class="addPhotoHover"
