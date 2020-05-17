@@ -66,13 +66,13 @@ function addComment(postId) {
 <body>
 	<div id="nav-placeholder">
 		<ul id="nav_links">
-			<li><a href="index"><img
+			<li><a href="/index"><img
 					src="/resources/images/Icons/home.png"></a></li>
-			<li><a href="discover"><img
+			<li><a href="/discover"><img
 					src="/resources/images/Icons/discoverIcon.png"></a></li>
-			<li><a href="addPost"><img
+			<li><a href="/addPost"><img
 					src="/resources/images/Icons/plus.png"></a></li>
-			<li><a href="profile"><img class="navAvatar"
+			<li><a href="/profile"><img class="navAvatar"
 					src="/uploads/${user.avatarUrl }"></a></li>
 		</ul>
 	</div>

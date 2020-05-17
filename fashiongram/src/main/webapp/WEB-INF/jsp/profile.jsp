@@ -34,46 +34,62 @@
 <body>
 	<div id="nav-placeholder">
 		<ul id="nav_links">
-			<li><a href="index"><img
+			<li><a href="i/ndex"><img
 					src="/resources/images/Icons/home.png"></a></li>
-			<li><a href="discover"><img
+			<li><a href="/discover"><img
 					src="/resources/images/Icons/discoverIcon.png"></a></li>
-			<li><a href="addPost"><img
+			<li><a href="/addPost"><img
 					src="/resources/images/Icons/plus.png"></a></li>
-			<li><a href="profile"><img class="navAvatar"
+			<li><a href="/profile"><img class="navAvatar"
 					src="/uploads/${user.avatarUrl }"></a></li>
-
 		</ul>
 	</div>
 	<div id="profileDetails">
 
-		<sf:form action="/editProfileAvatar" method="post"
-			enctype="multipart/form-data">
-			<div class="profileDetail" id="profileAvatar">
-				<img style="cursor: pointer" id="uploadedImage"
-					title="<s:message code="post.add.photo"/>"
-					src="uploads/${user.avatarUrl }" class="addPhotoHover"
-					onclick="document.getElementById('file').click();"> <input
-					type="file" style="display: none;" id="file" name="fileupload"
-					accept="image/*" onchange="this.form.submit()">
-			</div>
-		</sf:form>
+		<c:choose>
+			<c:when test="${ifLoggedUserProfile }">
+				<sf:form action="/editProfileAvatar" method="post"
+					enctype="multipart/form-data">
+					<div class="profileDetail" id="profileAvatar">
+						<img style="cursor: pointer" id="uploadedImage"
+							title="<s:message code="post.add.photo"/>"
+							src="/uploads/${user.avatarUrl }" class="addPhotoHover"
+							onclick="document.getElementById('file').click();"> <input
+							type="file" style="display: none;" id="file" name="fileupload"
+							accept="image/*" onchange="this.form.submit()">
+					</div>
+				</sf:form>
+			</c:when>
+			<c:otherwise>
+				<div class="profileDetail" id="profileAvatar">
+					<img id="uploadedImage" src="/uploads/${user.avatarUrl }"
+						class="addPhotoHover">
+				</div>
+			</c:otherwise>
+		</c:choose>
+
 
 		<div class="profileDetail">
 			<div>${user.name }</div>
 			<div class="profileDetail">
-				<button class="roundButton">Obserwuj</button>
+				<c:if test="${!ifLoggedUserProfile }">
+					<button class="roundButton">Obserwuj</button>
+				</c:if>
 			</div>
+
 		</div>
-		<div class="profileDetail" id="numberOfFollowers">
-			Obserwujący: <br>251K
-		</div>
+		<div class="profileDetail" id="numberOfFollowers">Obserwujący:
+			251K</div>
 	</div>
 	<div id="description">
 		<p>
-			<img style="width: 30px; height: 30px; cursor: pointer;"
-				src="/resources/images/Icons/editIcon.png"
-				onclick="showEditDescription()"> <b>Opis: </b>${user.description }
+			<c:if test="${ifLoggedUserProfile }">
+				<img style="width: 30px; height: 30px; cursor: pointer;"
+					src="/resources/images/Icons/editIcon.png"
+					onclick="showEditDescription()">
+			</c:if>
+					 ${user.description }
+		
 		</p>
 	</div>
 
