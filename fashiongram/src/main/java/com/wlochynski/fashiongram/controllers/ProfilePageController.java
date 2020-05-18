@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.wlochynski.fashiongram.models.Post;
 import com.wlochynski.fashiongram.models.User;
+import com.wlochynski.fashiongram.services.FollowService;
 import com.wlochynski.fashiongram.services.PostService;
 import com.wlochynski.fashiongram.services.UserService;
 import com.wlochynski.fashiongram.utilites.UserUtilites;
@@ -33,6 +34,9 @@ public class ProfilePageController {
 
 	@Autowired
 	PostService postService;
+	
+	@Autowired
+	FollowService followService;
 
 	@GET
 	@RequestMapping("profile")
@@ -47,6 +51,8 @@ public class ProfilePageController {
 
 		model.addAttribute("ifLoggedUserProfile", true);
 
+		model.addAttribute("numberOfFollowers", followService.countFollowsByUserId(user.getUserId()));
+
 		return "profile";
 	}
 
@@ -55,14 +61,29 @@ public class ProfilePageController {
 	public String showUserProfilePage(@PathVariable int profileId, Model model) {
 		String userEmail = UserUtilites.getLoggedUser();
 		User loggedUser = userService.findUserByEmail(userEmail);
+		
 		if (loggedUser.getUserId() != profileId) {
 			User user = userService.findUserByUserId(profileId);
 			model.addAttribute("user", user);
 
 			List<Post> listOfUserPosts = postService.findAllByUserId(user.getUserId());
+			
+			
+			
 			model.addAttribute("listOfUserPosts", listOfUserPosts);
 
 			model.addAttribute("ifLoggedUserProfile", false);
+			
+			if(followService.countFollowsByUserIdAndFollowerId(user.getUserId(),loggedUser.getUserId()) == 0)
+			{
+				model.addAttribute("isFollowing", false);
+			}
+			else {
+				model.addAttribute("isFollowing", true);
+			}
+			
+			//add model with number of user followers
+			model.addAttribute("numberOfFollowers", followService.countFollowsByUserId(user.getUserId()));
 
 			return "profile";
 		}

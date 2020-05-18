@@ -73,13 +73,20 @@
 			<div>${user.name }</div>
 			<div class="profileDetail">
 				<c:if test="${!ifLoggedUserProfile }">
-					<button class="roundButton">Obserwuj</button>
+					<c:choose>
+					<c:when test="${isFollowing }">
+						<button onclick="location.href='/follow/${user.userId }'" class="roundButton">Przestań obserwować</button>
+					</c:when>
+					<c:otherwise>
+						<button onclick="location.href='/follow/${user.userId }'" class="roundButton">Obserwuj</button>
+					</c:otherwise>
+					</c:choose>
 				</c:if>
 			</div>
 
 		</div>
 		<div class="profileDetail" id="numberOfFollowers">Obserwujący:
-			251K</div>
+			${numberOfFollowers }</div>
 	</div>
 	<div id="description">
 		<p>

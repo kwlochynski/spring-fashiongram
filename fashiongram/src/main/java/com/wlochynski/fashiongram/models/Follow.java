@@ -10,9 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "comment")
-public class Comment {
-	
+@Table(name = "follow")
+public class Follow {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
@@ -21,14 +20,11 @@ public class Comment {
 	@Column(name="userId")
 	private int userId;
 	
-	@Column(name="postId")
-	private int postId;
+	@Column(name="followerId")
+	private int followerId;
 	
-	@Column(name="content")
-	private String content;
-	
-	@Column(name="addDate")
-	private Calendar addDate = Calendar.getInstance();
+	@Column(name="followDate")
+	private Calendar followDate = Calendar.getInstance();
 
 	public int getId() {
 		return id;
@@ -46,29 +42,20 @@ public class Comment {
 		this.userId = userId;
 	}
 
-	public int getPostId() {
-		return postId;
+	public int getFollowerId() {
+		return followerId;
 	}
 
-	public void setPostId(int postId) {
-		this.postId = postId;
+	public void setFollowerId(int followerId) {
+		this.followerId = followerId;
 	}
 
-	public String getContent() {
-		return content;
+	public Calendar getFollowDate() {
+		return followDate;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setFollowDate(Calendar followDate) {
+		this.followDate = followDate;
 	}
-
-	public Calendar getAddDate() {
-		return addDate;
-	}
-
-	public void setAddDate(Calendar addDate) {
-		this.addDate = addDate;
-	}
-
 	
 }
