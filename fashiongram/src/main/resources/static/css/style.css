@@ -199,9 +199,9 @@ body {
 	border-radius: 50px;
 }
 
-.commentsText{
-	margin-left:10px;
-	font-size:15px;
+.commentsText {
+	margin-left: 10px;
+	font-size: 15px;
 	font-family: 'Raleway', sans-serif;
 }
 
@@ -226,4 +226,40 @@ body {
 	.actionelement {
 		margin: 0 10vw;
 	}
+}
+
+.users {
+	margin-top: 200px;
+}
+
+.recommendedUser {
+	font-family: 'Raleway', sans-serif;
+	background-color: #202020;
+	margin: 0 auto;
+	width: 400px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+	-webkit-box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.85);
+	-moz-box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.85);
+	box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.85);
+}
+
+.followButton {
+	height: 30px;
+	width: auto;
+	padding: 0 20px;
+	color: white;
+	background: none;
+	border: 1px solid white;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	font-size: 17px;
+}
+
+.followButton:hover {
+	transition: .6s;
+	color: black;
+	background-color: white;
 }

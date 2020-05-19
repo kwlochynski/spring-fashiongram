@@ -34,7 +34,7 @@
 <body>
 	<div id="nav-placeholder">
 		<ul id="nav_links">
-			<li><a href="i/ndex"><img
+			<li><a href="/index"><img
 					src="/resources/images/Icons/home.png"></a></li>
 			<li><a href="/discover"><img
 					src="/resources/images/Icons/discoverIcon.png"></a></li>

@@ -1,5 +1,7 @@
 package com.wlochynski.fashiongram.servicesImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,11 @@ public class FollowServiceImpl implements FollowService{
 	public int countFollowsByUserId(int userId) {
 		return followRepository.countFollowsByUserId(userId);
 	}
+	
+	@Override
+	public int countFollowsByFollowerId(int followerId) {
+		return followRepository.countFollowsByFollowerId(followerId);
+	}
 
 	@Override
 	public int countFollowsByUserIdAndFollowerId(int userId, int followerId) {
@@ -31,6 +38,11 @@ public class FollowServiceImpl implements FollowService{
 	@Override
 	public void deleteFollowByUserIdAndFollowerId(int userId, int followerId) {
 		followRepository.deleteFollowByUserIdAndFollowerId(userId, followerId);
+	}
+
+	@Override
+	public List<Integer> getTopUsersIdByFollowers() {
+		return followRepository.getTopUsersIdByFollowers();
 	}
 
 }
