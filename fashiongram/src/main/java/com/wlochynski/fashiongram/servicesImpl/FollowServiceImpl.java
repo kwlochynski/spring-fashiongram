@@ -45,4 +45,9 @@ public class FollowServiceImpl implements FollowService{
 		return followRepository.getTopUsersIdByFollowers();
 	}
 
+	@Override
+	public List<Integer> findFollowingUsers(int followerId) {
+		return followRepository.findFollowingUsers(followerId);
+	}
+
 }

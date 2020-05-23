@@ -11,5 +11,6 @@ public interface FollowService {
 	public int countFollowsByUserIdAndFollowerId(int userId, int followerId);
 	public void deleteFollowByUserIdAndFollowerId( int userId, int followerId);
 	public List<Integer> getTopUsersIdByFollowers();
-	int countFollowsByFollowerId(int followerId);
+	public int countFollowsByFollowerId(int followerId);
+	public List<Integer> findFollowingUsers(int followerId);
 }

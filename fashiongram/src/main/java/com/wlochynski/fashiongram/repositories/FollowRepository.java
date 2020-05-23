@@ -30,9 +30,11 @@ public interface FollowRepository extends JpaRepository<Follow, Integer> {
 	public void deleteFollowByUserIdAndFollowerId(@Param("userId") int userId, @Param("followerId") int followerId);
 	
 	
-	@Query(value = "SELECT user_id FROM Follow GROUP BY user_id ORDER BY count(user_id) LIMIT 5", nativeQuery = true)
+	@Query(value = "SELECT user_id FROM Follow GROUP BY user_id ORDER BY count(user_id) LIMIT 20", nativeQuery = true)
 	public List<Integer> getTopUsersIdByFollowers();
 	
+	@Query(value = "SELECT user_id FROM Follow WHERE follower_id =:followerId", nativeQuery = true)
+	public List<Integer> findFollowingUsers(@Param("followerId") int followerId);
 
 
 }

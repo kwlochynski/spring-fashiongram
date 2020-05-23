@@ -19,60 +19,190 @@
 	href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
 	rel="stylesheet">
 
+<script>
+	/* 	var inputComment;
+	 var inputCommentParent;
+	 window.onload = function() {
+	 inputComment = document.getElementById("addComment");
+	 inputCommentParent = document.getElementById("photodetails");
+	 inputCommentParent.removeChild(document.getElementById("addComment"));
+	 };
 
+	 function showInputComment() {
+	 if (document.getElementById("addComment")) {
+	 inputCommentParent.removeChild(document
+	 .getElementById("addComment"));
+	 } else {
+	 inputCommentParent.insertBefore(inputComment, document
+	 .getElementById("comments"));
+	 }
+
+	 } 
+	 */
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
-
+<script>
+function addComment(postId) {
+	var form = $('#addCommentForm'+postId);
+	var commentContent = $('#commentContent'+postId).val();
+		$
+			.ajax({
+					type : "post",
+					url : form.attr('action'),
+					data : form.serialize(),
+					success : function() {
+					$(
+					"<div class='comment'><img class='commentAvatar' src='/uploads/${user.avatarUrl }'><a id='commentText'> "+ commentContent +" </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
+					.prependTo('#comments'+postId);
+					}
+				})
+			};
+</script>
 
 </head>
 
 <body>
 	<div id="nav-placeholder">
 		<ul id="nav_links">
-			<li><a href="/index"><img
+			<li><a href="/index" title="Strona główna"><img
 					src="/resources/images/Icons/home.png"></a></li>
-			<li><a href="/discover"><img
+			<li><a href="/top" title="Najpopularniejsze"><img
+					src="/resources/images/Icons/topIcon.png"></a></li>
+			<li><a href="/discover" title="Odkrywaj najnowsze posty"><img
 					src="/resources/images/Icons/discoverIcon.png"></a></li>
-			<li><a href="/addPost"><img
+			<li><a href="/addPost" title="Dodaj post"><img
 					src="/resources/images/Icons/plus.png"></a></li>
-			<li><a href="/profile"><img class="navAvatar"
-					src="/uploads/${user.avatarUrl }"></a></li>
+			<li><a href="/profile" title="Twój profil"><img
+					class="navAvatar" src="/uploads/${user.avatarUrl }"></a></li>
 		</ul>
 	</div>
-	<div class="users">
-		<c:forEach varStatus="loop" var="topUser"
-			items="${topUsersByFollowers }">
-			<div class="recommendedUser">
-				<div>
-					<img
-						style="margin-bottom: 5px; margin-top: 10px; height: 100px; width: 100px;"
-						id="avatar" src="/uploads/${topUser.avatarUrl }">
-				</div>
-				<div>
-					<p style="margin: 0px; color: white">${topUser.name }</p>
-				</div>
-				<div>
-					<button style="margin-top: 5px; margin-bottom: 10px;"
-						class="followButton">Obserwuj</button>
-				</div>
-			</div>
-			<div class="recommendedUser">
-				<div>
-					<img
-						style="margin-bottom: 5px; margin-top: 10px; height: 100px; width: 100px;"
-						id="avatar" src="/uploads/${topUser.avatarUrl }">
-				</div>
-				<div>
-					<p style="margin: 0px; color: white">${topUser.name }</p>
-				</div>
-				<div>
-					<button style="margin-top: 5px; margin-bottom: 10px;"
-						class="followButton">Obserwuj</button>
-				</div>
-			</div>
 
-		</c:forEach>
-	</div>
+	<c:forEach varStatus="loop" var="post" items="${posts }">
+		<div class="box" id="post${post.id }">
+			<div id="photo">
+				<img src="/uploads/${post.photoName }">
+			</div>
+			<div id="photodetails">
+				<div id="userbox">
+					<c:forEach varStatus="loop" var="user" items="${userList }">
+						<c:if test="${post.userId eq user.userId }">
+							<div>
+								<a href="profile/${user.userId }"><img id="avatar"
+									src="uploads/${user.avatarUrl }"></a>
+							</div>
+							<div>
+								<a id="nickname" href="profile/${user.userId }">${user.name }</a>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+				<div id="description">
+					<p>${post.description }</p>
+				</div>
+				<div id="products">
+					<c:if test="${post.tshirtUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/tshirtIcon.png"
+								title="<s:message code="products.tshirtTitle"/>"><a
+								class="productLink" href="${post.tshirtUrl }">${post.tshirtUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.longSleeveUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/longSleevesIcon.png"
+								title="<s:message code="products.longSleevesTitle"/>"><a
+								class="productLink" href="${post.longSleeveUrl }">${post.longSleeveUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.pantsUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/pantsIcon.png"
+								title="<s:message code="products.pantsTitle"/>"
+								style="height: 30px; width: 25px; margin-left: 2.5px; margin-right: 12.5px;"><a
+								class="productLink" href="${post.pantsUrl }">${post.pantsUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.shoesUrl ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/shoesIcon.png"
+								title="<s:message code="products.shoesTitle"/>"><a
+								class="productLink" href="${post.shoesUrl }">${post.shoesUrl }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.others1Url ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/othersIcon.png"
+								title="<s:message code="products.othersTitle"/>"><a
+								class="productLink" href="${post.others1Url}">${post.others1Url}</a>
+						</div>
+					</c:if>
+					<c:if test="${post.others2Url ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/othersIcon.png"
+								title="<s:message code="products.othersTitle"/>"><a
+								class="productLink" href="${post.others2Url }">${post.others2Url }</a>
+						</div>
+					</c:if>
+					<c:if test="${post.others3Url ne '' }">
+						<div id="product">
+							<img class="productIcon"
+								src="/resources/images/Icons/othersIcon.png"
+								title="<s:message code="products.othersTitle"/>"><a
+								class="productLink" href="${post.others3Url }">${post.others3Url }</a>
+						</div>
+					</c:if>
+
+				</div>
+				<div id="actions">
+
+					<img src="/resources/images/Icons/likeIcon.png"
+						class="actionelement"> <img
+						src="/resources/images/Icons/commentIcon.png"
+						onclick="showInputComment()" class="actionelement"> <img
+						src="/resources/images/Icons/reportIcon.png" class="actionelement">
+
+				</div>
+
+				<form id="addCommentForm${post.id }"
+					action="/addComment/${post.id }" method="post">
+					<div id="addComment">
+						<input id="commentContent${post.id }" name="commentContent"
+							class="commentInput" placeholder="Treść komentarza" type="text">
+						<input id="addCommentButton" type="button" value="Dodaj komentarz"
+							onClick="addComment(${post.id})">
+					</div>
+				</form>
+				
+				<p class="commentsText">Komentarze:</p>
+				<div class="comments" id="comments${post.id }">
+					<c:forEach varStatus="loop" var="comment" items="${commentList }">
+						<c:if test="${post.id eq comment.postId }">
+							<div class="comment">
+								<c:forEach varStatus="loop" var="commentUser"
+									items="${commentUserList }">
+									<c:if test="${comment.userId eq commentUser.userId }">
+										<img class="commentAvatar"
+											src="/uploads/${commentUser.avatarUrl }">
+										<a class="commentText">${comment.content }</a>
+										<a id="commentDate">${comment.addDate.time }</a>
+									</c:if>
+								</c:forEach>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+
+
+			</div>
+		</div>
+	</c:forEach>
 </body>
 </html>

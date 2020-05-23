@@ -1,6 +1,5 @@
 package com.wlochynski.fashiongram.servicesImpl;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,10 @@ import com.wlochynski.fashiongram.services.PostService;
 @Service("postService")
 @Transactional
 public class PostServiceImpl implements PostService {
-	
+
 	@Autowired
 	PostRepository postRepository;
-	
+
 	public void savePost(Post post) {
 		postRepository.save(post);
 	}
@@ -40,6 +39,11 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<Post> findAllByOrderByIdDesc() {
 		return postRepository.findAllByOrderByIdDesc();
+	}
+
+	@Override
+	public List<Post> findAllByUserIdIn(List<Integer> followerId){
+		return postRepository.findAllByUserIdInOrderByIdDesc(followerId);
 	}
 	
 	

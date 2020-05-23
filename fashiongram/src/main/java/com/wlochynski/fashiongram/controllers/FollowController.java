@@ -15,33 +15,31 @@ import com.wlochynski.fashiongram.utilites.UserUtilites;
 
 @Controller
 public class FollowController {
-	
+
 	@Autowired
 	FollowService followService;
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	@GET
 	@RequestMapping("/follow/{profileId}")
-	public String followUser(@PathVariable("profileId") int profileId)
-	{
+	public String followUser(@PathVariable("profileId") int profileId) {
 		String userEmail = UserUtilites.getLoggedUser();
 		User user = userService.findUserByEmail(userEmail);
-		
-		
-		if(followService.countFollowsByUserIdAndFollowerId(profileId,user.getUserId()) == 0)
-		{
-		//set values of follow and save to db
-		Follow follow = new Follow();
-		follow.setFollowerId(user.getUserId());
-		follow.setUserId(profileId);
-		followService.saveFollow(follow);
+
+		if (profileId != user.getUserId()) {
+			if (followService.countFollowsByUserIdAndFollowerId(profileId, user.getUserId()) == 0) {
+				// set values of follow and save to db
+				Follow follow = new Follow();
+				follow.setFollowerId(user.getUserId());
+				follow.setUserId(profileId);
+				followService.saveFollow(follow);
+			} else {
+				followService.deleteFollowByUserIdAndFollowerId(profileId, user.getUserId());
+			}
 		}
-		else {
-			followService.deleteFollowByUserIdAndFollowerId(profileId, user.getUserId());
-		}
-		
-		return "redirect:/profile/"+profileId;
+
+		return "redirect:/profile/" + profileId;
 	}
 }

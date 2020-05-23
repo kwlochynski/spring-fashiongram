@@ -35,7 +35,7 @@ public class DiscoverPageController {
 	public String showDiscoverPage(Model model)
 	{
 		List<Post> newPosts = postService.findAllByOrderByIdDesc();
-		model.addAttribute("newPosts", newPosts);
+		model.addAttribute("posts", newPosts);
 		List<Integer> userIds = new ArrayList<Integer>();
 		List<Integer> postIds = new ArrayList<Integer>();
 		for(Post p : newPosts)
@@ -62,7 +62,7 @@ public class DiscoverPageController {
 		User user = userService.findUserByEmail(userEmail);
 		model.addAttribute("user", user);
 
-		return "discover";
+		return "index";
 	}
 	
 }

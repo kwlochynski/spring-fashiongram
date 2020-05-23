@@ -11,4 +11,5 @@ public interface PostService {
 	public List<Post> findAllByUserId(Integer userId);
 	public List<Post> findAll();
 	public List<Post> findAllByOrderByIdDesc();
+	List<Post> findAllByUserIdIn(List<Integer> followerId);
 }
