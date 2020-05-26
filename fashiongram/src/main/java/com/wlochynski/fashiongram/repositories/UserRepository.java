@@ -1,11 +1,15 @@
 package com.wlochynski.fashiongram.repositories;
 
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.wlochynski.fashiongram.dto.TopUserDTO;
 import com.wlochynski.fashiongram.models.User;
 
 
@@ -29,9 +33,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("UPDATE User u SET u.description = :description WHERE u.id = :id")
 	public void updateUserDescription(@Param("description") String description, @Param("id") Integer id);
 	
-	
 	@Modifying
 	@Query("UPDATE User u SET u.avatarUrl = :avatarUrl WHERE u.id = :id")
 	public void updateUserAvatarUrl(@Param("avatarUrl") String avatarUrl, @Param("id") Integer id);
+	
+	@Query("SELECT new com.wlochynski.fashiongram.dto.TopUserDTO(u.userId, u.name, u.avatarUrl, count(f.userId) as numberOfFollowers) FROM User u JOIN Follow f on u.userId = f.userId GROUP BY f.userId ORDER BY numberOfFollowers DESC")
+	public List<TopUserDTO> getTopUserDTO(Pageable pageable);
+	
 	
 }

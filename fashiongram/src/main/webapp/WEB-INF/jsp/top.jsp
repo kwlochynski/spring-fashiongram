@@ -40,6 +40,8 @@
 					src="/resources/images/Icons/plus.png"></a></li>
 			<li><a href="/profile" title="Twój profil"><img
 					class="navAvatar" src="/uploads/${user.avatarUrl }"></a></li>
+			<li><a href="/logout" title="Dodaj post"><img
+					src="/resources/images/Icons/logoutIcon.png"></a></li>
 		</ul>
 	</div>
 	<div class="users">
@@ -57,11 +59,10 @@
 								id="avatar" src="/uploads/${topUser.avatarUrl }">
 						</div>
 						<div>
-							<p style="margin: 0px; color: white">${topUser.name }</p>
+							<a href="/profile/${topUser.userId }" title="Zobacz profil" style="text-decoration: none; margin: 0px; color: white; border-bottom: 1px solid white; padding-left:10px;padding-right:10px; padding-bottom: -3px">${topUser.name }</a>
 						</div>
 						<div>
-							<button style="margin-top: 5px; margin-bottom: 10px;"
-								class="followButton" onclick="location.href='/follow/${topUser.userId }'">Obserwuj</button>
+							<p style="margin: 10px;color:white">Obserwujący: ${topUser.numberOfFollowers }</p>
 						</div>
 					</div>
 				</c:forEach>

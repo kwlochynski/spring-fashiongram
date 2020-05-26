@@ -5,10 +5,12 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.wlochynski.fashiongram.dto.TopUserDTO;
 import com.wlochynski.fashiongram.models.Role;
 import com.wlochynski.fashiongram.models.User;
 import com.wlochynski.fashiongram.repositories.RoleRepository;
@@ -85,5 +87,10 @@ import com.wlochynski.fashiongram.services.UserService;
 	public List<User> findAllById(List<Integer> userIds) {
 		List<User> userList = userRepository.findAllById(userIds);
 		return userList;
+	}
+
+	@Override
+	public List<TopUserDTO> getTopUserDTO(Pageable pageable) {
+		return userRepository.getTopUserDTO(pageable);
 	}
 }

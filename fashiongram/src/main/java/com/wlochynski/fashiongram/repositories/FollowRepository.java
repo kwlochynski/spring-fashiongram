@@ -29,7 +29,7 @@ public interface FollowRepository extends JpaRepository<Follow, Integer> {
 	@Query("DELETE FROM Follow WHERE user_id =:userId and follower_id =:followerId")
 	public void deleteFollowByUserIdAndFollowerId(@Param("userId") int userId, @Param("followerId") int followerId);
 	
-	
+	//replaced, unused
 	@Query(value = "SELECT user_id FROM Follow GROUP BY user_id ORDER BY count(user_id) LIMIT 20", nativeQuery = true)
 	public List<Integer> getTopUsersIdByFollowers();
 	

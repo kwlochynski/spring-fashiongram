@@ -5,10 +5,12 @@ import java.util.List;
 import javax.ws.rs.GET;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.wlochynski.fashiongram.dto.TopUserDTO;
 import com.wlochynski.fashiongram.models.User;
 import com.wlochynski.fashiongram.services.FollowService;
 import com.wlochynski.fashiongram.services.UserService;
@@ -31,8 +33,7 @@ public class TopPageController {
 		User user = userService.findUserByEmail(userEmail);
 		model.addAttribute("user", user);
 		
-		List<Integer> topUsersIdByFollowers = followService.getTopUsersIdByFollowers();
-		List<User> topUsersByFollowers = userService.findAllById(topUsersIdByFollowers);
+		List<TopUserDTO> topUsersByFollowers = userService.getTopUserDTO(PageRequest.of(0, 20));
 		model.addAttribute("topUsersByFollowers", topUsersByFollowers);
 		
 		return null;

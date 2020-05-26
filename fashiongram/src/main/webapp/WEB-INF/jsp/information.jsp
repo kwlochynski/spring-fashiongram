@@ -40,6 +40,8 @@
 					src="/resources/images/Icons/plus.png"></a></li>
 			<li><a href="/profile" title="Twój profil"><img
 					class="navAvatar" src="/uploads/${user.avatarUrl }"></a></li>
+			<li><a href="/logout" title="Dodaj post"><img
+					src="/resources/images/Icons/logoutIcon.png"></a></li>
 		</ul>
 	</div>
 	
