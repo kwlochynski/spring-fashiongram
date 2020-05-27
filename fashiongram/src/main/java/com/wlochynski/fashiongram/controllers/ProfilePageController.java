@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wlochynski.fashiongram.models.Comment;
 import com.wlochynski.fashiongram.models.Post;
 import com.wlochynski.fashiongram.models.User;
+import com.wlochynski.fashiongram.services.CommentService;
 import com.wlochynski.fashiongram.services.FollowService;
 import com.wlochynski.fashiongram.services.PostService;
 import com.wlochynski.fashiongram.services.UserService;
@@ -37,6 +41,9 @@ public class ProfilePageController {
 	
 	@Autowired
 	FollowService followService;
+	
+	@Autowired
+	CommentService commentService;
 
 	@GET
 	@RequestMapping("profile")
@@ -91,6 +98,43 @@ public class ProfilePageController {
 		else {
 			return "redirect:/profile";
 		}
+	}
+	
+	@GET
+	@RequestMapping("/profile/post/{postId}")
+	public String displayImage(Model model, @PathVariable int postId) {
+		String userEmail = UserUtilites.getLoggedUser();
+		User loggedUser = userService.findUserByEmail(userEmail);
+		model.addAttribute("loggedUser", loggedUser);
+
+		model.addAttribute("postId",postId);
+		
+		Post post = postService.findOneById(postId);
+		model.addAttribute("displayUser",userService.findUserByUserId(post.getUserId()));
+		
+		List<Post> userPosts = postService.findAllByUserId(post.getUserId());
+		model.addAttribute("userPosts",userPosts);
+		
+		List<Integer> postIds = new ArrayList<Integer>();
+		for(Post p : userPosts)
+		{
+			postIds.add(p.getId());
+		}
+		
+		
+		List<Comment> commentList = commentService.findAllByPostIdInOrderByIdDesc(postIds);
+		model.addAttribute("commentList",commentList);
+		
+		List<Integer> commentUserIds = new ArrayList<Integer>();
+		for(Comment c : commentList)
+		{
+			commentUserIds.add(c.getUserId());
+		}
+		
+		List<User> commentUserList = userService.findAllById(commentUserIds);
+		model.addAttribute("commentUserList",commentUserList);
+		
+		return "userPosts";
 	}
 
 	@POST

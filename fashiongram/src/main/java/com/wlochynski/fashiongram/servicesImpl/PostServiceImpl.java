@@ -46,6 +46,12 @@ public class PostServiceImpl implements PostService {
 		return postRepository.findAllByUserIdInOrderByIdDesc(followerId);
 	}
 	
+	@Override
+	public Post findOneById(int postId)
+	{
+		return postRepository.findOneById(postId);
+	}
+	
 	
 
 

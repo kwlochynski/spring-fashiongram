@@ -86,10 +86,6 @@ body {
 	width: 100%;
 	height: 15vw;
 }
-.image img:hover+.imageText {
-	transition: 0.5s;
-	display: block;
-}
 
 @media screen and (max-width:960px) {
 	#imageContainer {

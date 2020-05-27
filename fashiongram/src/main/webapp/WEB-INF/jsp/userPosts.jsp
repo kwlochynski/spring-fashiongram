@@ -22,6 +22,15 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 <script>
+
+window.onload = function() {
+	 document.getElementById('post'+${postId}).scrollIntoView({
+         behavior: 'auto',
+         block: 'center',
+         inline: 'center'
+     });
+	};
+
 function addComment(postId) {
 	var form = $('#addCommentForm'+postId);
 	var commentContent = $('#commentContent'+postId).val();
@@ -53,30 +62,28 @@ function addComment(postId) {
 			<li><a href="/addPost" title="Dodaj post"><img
 					src="/resources/images/Icons/plus.png"></a></li>
 			<li><a href="/profile" title="Twój profil"><img
-					class="navAvatar" src="/uploads/${user.avatarUrl }"></a></li>
+					class="navAvatar" src="/uploads/${loggedUser.avatarUrl }"></a></li>
 			<li><a href="/logout" title="Dodaj post"><img
 					src="/resources/images/Icons/logoutIcon.png"></a></li>
 		</ul>
 	</div>
 
-	<c:forEach varStatus="loop" var="post" items="${posts }">
-		<div class="box" id="post${post.id }">
+	<c:forEach varStatus="loop" var="post" items="${userPosts }">
+		<div class="box" id="post${post.id }" style="top:-100px;">
 			<div id="photo">
 				<img src="/uploads/${post.photoName }">
 			</div>
 			<div id="photodetails">
 				<div id="userbox">
-					<c:forEach varStatus="loop" var="user" items="${userList }">
-						<c:if test="${post.userId eq user.userId }">
+
 							<div>
-								<a href="profile/${user.userId }"><img id="avatar"
-									src="/uploads/${user.avatarUrl }"></a>
+								<a href="profile/${displayUser.userId }"><img id="avatar"
+									src="/uploads/${displayUser.avatarUrl }"></a>
 							</div>
 							<div>
-								<a id="nickname" href="profile/${user.userId }">${user.name }</a>
+								<a id="nickname" href="profile/${displayUser.userId }">${displayUser.name }</a>
 							</div>
-						</c:if>
-					</c:forEach>
+
 				</div>
 				<div id="description">
 					<p>${post.description }</p>

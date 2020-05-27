@@ -42,8 +42,17 @@
 					src="/resources/images/Icons/discoverIcon.png"></a></li>
 			<li><a href="/addPost" title="Dodaj post"><img
 					src="/resources/images/Icons/plus.png"></a></li>
-			<li><a href="/profile" title="Twój profil"><img
-					class="navAvatar" src="/uploads/${loggedUser.avatarUrl }"></a></li>
+			<li><a href="/profile" title="Twój profil"> <c:choose>
+						<c:when test="${ifLoggedUserProfile }">
+							<img class="navAvatar" src="/uploads/${user.avatarUrl }">
+						</c:when>
+						<c:otherwise>
+							<img class="navAvatar" src="/uploads/${loggedUser.avatarUrl }">
+						</c:otherwise>
+					</c:choose>
+			</a></li>
+
+
 			<li><a href="/logout" title="Dodaj post"><img
 					src="/resources/images/Icons/logoutIcon.png"></a></li>
 		</ul>
@@ -78,12 +87,14 @@
 			<div class="profileDetail">
 				<c:if test="${!ifLoggedUserProfile }">
 					<c:choose>
-					<c:when test="${isFollowing }">
-						<button onclick="location.href='/follow/${user.userId }'" class="roundButton">Przestań obserwować</button>
-					</c:when>
-					<c:otherwise>
-						<button onclick="location.href='/follow/${user.userId }'" class="roundButton">Obserwuj</button>
-					</c:otherwise>
+						<c:when test="${isFollowing }">
+							<button onclick="location.href='/follow/${user.userId }'"
+								class="roundButton">Przestań obserwować</button>
+						</c:when>
+						<c:otherwise>
+							<button onclick="location.href='/follow/${user.userId }'"
+								class="roundButton">Obserwuj</button>
+						</c:otherwise>
 					</c:choose>
 				</c:if>
 			</div>
@@ -99,8 +110,8 @@
 					src="/resources/images/Icons/editIcon.png"
 					onclick="showEditDescription()">
 			</c:if>
-					 ${user.description }
-		
+			${user.description }
+
 		</p>
 	</div>
 
@@ -116,7 +127,7 @@
 	<div id="imageContainer">
 		<c:forEach varStatus="loop" var="post" items="${listOfUserPosts }">
 			<div class="image">
-				<img src="/uploads/${post.photoName }">
+				<a href="profile/post/${post.id }"><img src="/uploads/${post.photoName }"></a>
 			</div>
 		</c:forEach>
 	</div>
