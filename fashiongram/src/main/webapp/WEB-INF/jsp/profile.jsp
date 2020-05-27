@@ -43,7 +43,7 @@
 			<li><a href="/addPost" title="Dodaj post"><img
 					src="/resources/images/Icons/plus.png"></a></li>
 			<li><a href="/profile" title="Twój profil"><img
-					class="navAvatar" src="/uploads/${user.avatarUrl }"></a></li>
+					class="navAvatar" src="/uploads/${loggedUser.avatarUrl }"></a></li>
 			<li><a href="/logout" title="Dodaj post"><img
 					src="/resources/images/Icons/logoutIcon.png"></a></li>
 		</ul>
@@ -117,18 +117,6 @@
 		<c:forEach varStatus="loop" var="post" items="${listOfUserPosts }">
 			<div class="image">
 				<img src="/uploads/${post.photoName }">
-				<div class="imageText">
-					<div id="likesCounter" class="counter">
-						<img src="/resources/images/Icons/likeIcon.png"
-							class="actionElement">
-						<p>100</p>
-					</div>
-					<div id="commentsCounter" class="counter">
-						<img src="/resources/images/Icons/commentIcon.png"
-							class="actionElement">
-						<p>10</p>
-					</div>
-				</div>
 			</div>
 		</c:forEach>
 	</div>

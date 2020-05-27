@@ -73,6 +73,7 @@ public class ProfilePageController {
 			model.addAttribute("listOfUserPosts", listOfUserPosts);
 
 			model.addAttribute("ifLoggedUserProfile", false);
+			model.addAttribute("loggedUser",loggedUser);
 			
 			if(followService.countFollowsByUserIdAndFollowerId(user.getUserId(),loggedUser.getUserId()) == 0)
 			{
