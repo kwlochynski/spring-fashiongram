@@ -127,7 +127,7 @@
 	<div id="imageContainer">
 		<c:forEach varStatus="loop" var="post" items="${listOfUserPosts }">
 			<div class="image">
-				<a href="profile/post/${post.id }"><img src="/uploads/${post.photoName }"></a>
+				<a href="/profile/post/${post.id }"><img src="/uploads/${post.photoName }"></a>
 			</div>
 		</c:forEach>
 	</div>

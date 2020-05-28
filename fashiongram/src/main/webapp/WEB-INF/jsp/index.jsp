@@ -22,21 +22,51 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 <script>
-function addComment(postId) {
-	var form = $('#addCommentForm'+postId);
-	var commentContent = $('#commentContent'+postId).val();
+	function addComment(postId) {
+		var form = $('#addCommentForm' + postId);
+		var commentContent = $('#commentContent' + postId).val();
 		$
-			.ajax({
+				.ajax({
 					type : "post",
 					url : form.attr('action'),
 					data : form.serialize(),
 					success : function() {
-					$(
-					"<div class='comment'><img class='commentAvatar' src='/uploads/${user.avatarUrl }'><a id='commentText'> "+ commentContent +" </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
-					.prependTo('#comments'+postId);
+						$(
+								"<div class='comment'><img class='commentAvatar' src='/uploads/${user.avatarUrl }'><a id='commentText'> "
+										+ commentContent
+										+ " </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
+								.prependTo('#comments' + postId);
 					}
 				})
-			};
+	};
+
+	function like(postId, numberOfLikes) {
+		var title = document.getElementById("numberOfLikes"+postId).innerHTML;
+		var likes = parseInt(title.split(' ')[0], 10);
+		if((document.getElementById("likeButton"+postId).src).includes("/resources/images/Icons/likeIcon.png")) {
+			document.getElementById("likeButton"+postId).src="/resources/images/Icons/likedIcon.png";
+			likes++;
+		}
+		else{
+			document.getElementById("likeButton"+postId).src="/resources/images/Icons/likeIcon.png";
+			likes--;
+		}
+		
+		if(likes == 1)
+			document.getElementById("numberOfLikes"+postId).innerHTML = likes +" osoba lubi to!";	
+		if(likes == 2 || likes == 3 || likes == 4)
+			document.getElementById("numberOfLikes"+postId).innerHTML = likes +" osoby lubią to!";	
+		if(likes > 4 || likes == 0)
+			document.getElementById("numberOfLikes"+postId).innerHTML = likes +" osób lubi to!";	
+		
+		$.ajax({
+			type : "post",
+			url : "/like/" + postId,
+			success : function() {
+
+			}
+		})
+	};
 </script>
 
 </head>
@@ -66,17 +96,15 @@ function addComment(postId) {
 			</div>
 			<div id="photodetails">
 				<div id="userbox">
-					<c:forEach varStatus="loop" var="user" items="${userList }">
-						<c:if test="${post.userId eq user.userId }">
-							<div>
-								<a href="profile/${user.userId }"><img id="avatar"
-									src="/uploads/${user.avatarUrl }"></a>
-							</div>
-							<div>
-								<a id="nickname" href="profile/${user.userId }">${user.name }</a>
-							</div>
-						</c:if>
-					</c:forEach>
+
+					<div>
+						<a href="profile/${post.userId }"><img id="avatar"
+							src="/uploads/${post.postedUserAvatar }"></a>
+					</div>
+					<div>
+						<a id="nickname" href="profile/${post.userId }">${post.postedUserName }</a>
+					</div>
+
 				</div>
 				<div id="description">
 					<p>${post.description }</p>
@@ -142,14 +170,63 @@ function addComment(postId) {
 
 				</div>
 				<div id="actions">
+					<c:set var="contains" value="false" />
+					<c:choose>
+						<c:when test="${not empty userLikes}">
+							<c:forEach varStatus="loop" var="likedPost" items="${userLikes }">
+								<c:if test="${likedPost eq post.id }">
+									<c:set var="contains" value="true" />
+								</c:if>
+							</c:forEach>
 
-					<img src="/resources/images/Icons/likeIcon.png"
-						class="actionelement"> <img
-						src="/resources/images/Icons/commentIcon.png"
+							<c:choose>
+								<c:when test="${contains eq true }">
+									<img src="/resources/images/Icons/likedIcon.png"
+										class="actionelement" id="likeButton${post.id }"
+										onClick="like(${post.id},${post.numberOfLikes })">
+								</c:when>
+								<c:otherwise>
+									<img src="/resources/images/Icons/likeIcon.png"
+										class="actionelement" id="likeButton${post.id }"
+										onClick="like(${post.id},${post.numberOfLikes })">
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+						<c:otherwise>
+							<img src="/resources/images/Icons/likeIcon.png"
+								class="actionelement" id="likeButton${post.id }"
+								onClick="like(${post.id},${post.numberOfLikes })">
+						</c:otherwise>
+					</c:choose>
+					<img src="/resources/images/Icons/commentIcon.png"
 						onclick="showInputComment()" class="actionelement"> <img
 						src="/resources/images/Icons/reportIcon.png" class="actionelement">
-
 				</div>
+
+
+
+				<c:choose>
+					<c:when test="${post.numberOfLikes == 1}">
+						<p class="commentsText" id="numberOfLikes${post.id}">${post.numberOfLikes }
+							osoba lubi to!</p>
+					</c:when>
+
+					<c:when
+						test="${post.numberOfLikes == 2 || post.numberOfLikes == 3 || post.numberOfLikes == 4}">
+						<p class="commentsText" id="numberOfLikes${post.id}">${post.numberOfLikes }
+							osoby lubią to!</p>
+					</c:when>
+
+					<c:otherwise>
+						<p class="commentsText" id="numberOfLikes${post.id}">${post.numberOfLikes }
+							osób lubi to!</p>
+					</c:otherwise>
+
+				</c:choose>
+
+
+
+
 
 				<form id="addCommentForm${post.id }"
 					action="/addComment/${post.id }" method="post">
@@ -160,7 +237,7 @@ function addComment(postId) {
 							onClick="addComment(${post.id})">
 					</div>
 				</form>
-				
+
 				<p class="commentsText">Komentarze:</p>
 				<div class="comments" id="comments${post.id }">
 					<c:forEach varStatus="loop" var="comment" items="${commentList }">

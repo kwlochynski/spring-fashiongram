@@ -46,6 +46,34 @@ function addComment(postId) {
 					}
 				})
 			};
+
+			function like(postId, numberOfLikes) {
+				var title = document.getElementById("numberOfLikes"+postId).innerHTML;
+				var likes = parseInt(title.split(' ')[0], 10);
+				if((document.getElementById("likeButton"+postId).src).includes("/resources/images/Icons/likeIcon.png")) {
+					document.getElementById("likeButton"+postId).src="/resources/images/Icons/likedIcon.png";
+					likes++;
+				}
+				else{
+					document.getElementById("likeButton"+postId).src="/resources/images/Icons/likeIcon.png";
+					likes--;
+				}
+				
+				if(likes == 1)
+					document.getElementById("numberOfLikes"+postId).innerHTML = likes +" osoba lubi to!";	
+				if(likes == 2 || likes == 3 || likes == 4)
+					document.getElementById("numberOfLikes"+postId).innerHTML = likes +" osoby lubią to!";	
+				if(likes > 4 || likes == 0)
+					document.getElementById("numberOfLikes"+postId).innerHTML = likes +" osób lubi to!";	
+				
+				$.ajax({
+					type : "post",
+					url : "/like/" + postId,
+					success : function() {
+
+					}
+				})
+			};
 </script>
 
 </head>
@@ -69,20 +97,20 @@ function addComment(postId) {
 	</div>
 
 	<c:forEach varStatus="loop" var="post" items="${userPosts }">
-		<div class="box" id="post${post.id }" style="top:-100px;">
+		<div class="box" id="post${post.id }" style="top: -100px;">
 			<div id="photo">
 				<img src="/uploads/${post.photoName }">
 			</div>
 			<div id="photodetails">
 				<div id="userbox">
 
-							<div>
-								<a href="profile/${displayUser.userId }"><img id="avatar"
-									src="/uploads/${displayUser.avatarUrl }"></a>
-							</div>
-							<div>
-								<a id="nickname" href="profile/${displayUser.userId }">${displayUser.name }</a>
-							</div>
+					<div>
+						<a href="profile/${displayUser.userId }"><img id="avatar"
+							src="/uploads/${displayUser.avatarUrl }"></a>
+					</div>
+					<div>
+						<a id="nickname" href="profile/${displayUser.userId }">${displayUser.name }</a>
+					</div>
 
 				</div>
 				<div id="description">
@@ -149,15 +177,56 @@ function addComment(postId) {
 
 				</div>
 				<div id="actions">
+					<c:set var="contains" value="false" />
+					<c:choose>
+						<c:when test="${not empty userLikes}">
+							<c:forEach varStatus="loop" var="likedPost" items="${userLikes }">
+								<c:if test="${likedPost eq post.id }">
+									<c:set var="contains" value="true" />
+								</c:if>
+							</c:forEach>
 
-					<img src="/resources/images/Icons/likeIcon.png"
-						class="actionelement"> <img
-						src="/resources/images/Icons/commentIcon.png"
+							<c:choose>
+								<c:when test="${contains eq true }">
+									<img src="/resources/images/Icons/likedIcon.png"
+										class="actionelement" id="likeButton${post.id }"
+										onClick="like(${post.id},${post.numberOfLikes })">
+								</c:when>
+								<c:otherwise>
+									<img src="/resources/images/Icons/likeIcon.png"
+										class="actionelement" id="likeButton${post.id }"
+										onClick="like(${post.id},${post.numberOfLikes })">
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+						<c:otherwise>
+							<img src="/resources/images/Icons/likeIcon.png"
+								class="actionelement" id="likeButton${post.id }"
+								onClick="like(${post.id},${post.numberOfLikes })">
+						</c:otherwise>
+					</c:choose>
+					<img src="/resources/images/Icons/commentIcon.png"
 						onclick="showInputComment()" class="actionelement"> <img
 						src="/resources/images/Icons/reportIcon.png" class="actionelement">
-
 				</div>
+				<c:choose>
+					<c:when test="${post.numberOfLikes == 1}">
+						<p class="commentsText" id="numberOfLikes${post.id}">${post.numberOfLikes }
+							osoba lubi to!</p>
+					</c:when>
 
+					<c:when
+						test="${post.numberOfLikes == 2 || post.numberOfLikes == 3 || post.numberOfLikes == 4}">
+						<p class="commentsText" id="numberOfLikes${post.id}">${post.numberOfLikes }
+							osoby lubią to!</p>
+					</c:when>
+
+					<c:otherwise>
+						<p class="commentsText" id="numberOfLikes${post.id}">${post.numberOfLikes }
+							osób lubi to!</p>
+					</c:otherwise>
+
+				</c:choose>
 				<form id="addCommentForm${post.id }"
 					action="/addComment/${post.id }" method="post">
 					<div id="addComment">
@@ -167,7 +236,7 @@ function addComment(postId) {
 							onClick="addComment(${post.id})">
 					</div>
 				</form>
-				
+
 				<p class="commentsText">Komentarze:</p>
 				<div class="comments" id="comments${post.id }">
 					<c:forEach varStatus="loop" var="comment" items="${commentList }">

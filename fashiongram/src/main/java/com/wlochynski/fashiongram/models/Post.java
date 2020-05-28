@@ -50,6 +50,12 @@ public class Post {
 	
 	@Transient
 	private String postedUserAvatar;
+	
+	@Transient
+	private String postedUserName;
+	
+	@Transient
+	private long numberOfLikes;
 
 	public int getId() {
 		return id;
@@ -146,7 +152,20 @@ public class Post {
 	public void setPostedUserAvatar(String postedUserAvatar) {
 		this.postedUserAvatar = postedUserAvatar;
 	}
-	
-	
 
+	public String getPostedUserName() {
+		return postedUserName;
+	}
+
+	public void setPostedUserName(String postedUserName) {
+		this.postedUserName = postedUserName;
+	}
+
+	public long getNumberOfLikes() {
+		return numberOfLikes;
+	}
+
+	public void setNumberOfLikes(long numberOfLikes) {
+		this.numberOfLikes = numberOfLikes;
+	}
 }

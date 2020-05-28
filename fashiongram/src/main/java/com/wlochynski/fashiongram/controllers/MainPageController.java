@@ -11,11 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.wlochynski.fashiongram.dto.PostLikesDTO;
 import com.wlochynski.fashiongram.models.Comment;
 import com.wlochynski.fashiongram.models.Post;
 import com.wlochynski.fashiongram.models.User;
 import com.wlochynski.fashiongram.services.CommentService;
 import com.wlochynski.fashiongram.services.FollowService;
+import com.wlochynski.fashiongram.services.LikeService;
 import com.wlochynski.fashiongram.services.PostService;
 import com.wlochynski.fashiongram.services.UserService;
 import com.wlochynski.fashiongram.utilites.UserUtilites;
@@ -33,6 +35,9 @@ public class MainPageController {
 	PostService postService;
 	
 	@Autowired
+	LikeService likeService;
+	
+	@Autowired
 	CommentService commentService;
 
 	@GET
@@ -47,7 +52,6 @@ public class MainPageController {
 		} else {
 			
 			List<Post> followersPosts = postService.findAllByUserIdIn(followService.findFollowingUsers(user.getUserId()));
-			model.addAttribute("posts", followersPosts);
 			
 			List<Integer> userIds = new ArrayList<Integer>();
 			List<Integer> postIds = new ArrayList<Integer>();
@@ -56,8 +60,36 @@ public class MainPageController {
 				userIds.add(p.getUserId());
 				postIds.add(p.getId());
 			}
+			
+			List<PostLikesDTO> postsLikesDTO = likeService.getPostsLikesDTO(postIds);
+
+			List<Integer> userLikes = likeService.getUserLikes(user.getUserId(), postIds);
+			
+			model.addAttribute("userLikes",userLikes);
+			
 			List<User> userList = userService.findAllById(userIds);
-			model.addAttribute("userList",userList);
+			
+			for(Post p : followersPosts)
+			{
+				for(User u : userList)
+				{
+					if(p.getUserId() == u.getUserId())
+					{
+						p.setPostedUserAvatar(u.getAvatarUrl());
+						p.setPostedUserName(u.getName());
+						break;
+					}
+				}
+				for(PostLikesDTO pl : postsLikesDTO)
+				{
+					if(p.getId() == pl.getPostId())
+					{
+						p.setNumberOfLikes(pl.getNumberOfLikes());
+						break;
+					}
+				}
+			}
+			model.addAttribute("posts", followersPosts);
 			
 			List<Comment> commentList = commentService.findAllByPostIdInOrderByIdDesc(postIds);
 			model.addAttribute("commentList",commentList);

@@ -93,12 +93,8 @@ body {
 	width: 30px;
 }
 
-#products {
-	margin: 5px;
-}
-
 #product {
-	margin: 2vh;
+	margin: 1vw;
 }
 
 .productLink {
@@ -131,6 +127,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 	color: white;
 	line-height: 25px;
+	margin:1vw;
 }
 
 .comment {
@@ -146,6 +143,7 @@ body {
 	height: 30px;
 	margin-right: 10px;
 	vertical-align: middle;
+
 }
 
 #commentDate {
@@ -169,7 +167,7 @@ body {
 }
 
 #addCommentButton {
-	width: 50%;
+	width: 40%;
 	-webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
 	border-radius: 50px;
@@ -200,7 +198,7 @@ body {
 }
 
 .commentsText {
-	margin-left: 10px;
+	margin: 1vw;
 	font-size: 15px;
 	font-family: 'Raleway', sans-serif;
 }
@@ -208,10 +206,18 @@ body {
 @media screen and (max-width:960px) {
 	.box {
 		flex-direction: column;
+		margin-top: 300px;
 	}
 	#photo {
 		width: 90vw;
 		max-width: 90vw;
+		position: relative;
+		left: 50%;
+		margin-right: -50%;
+		transform: translate(-50%, 0%)
+	}
+	#photo img {
+		width: 90vw;
 	}
 	#photodetails {
 		min-height: 300px;
@@ -235,7 +241,7 @@ body {
 .swiper-slide {
 	font-family: 'Raleway', sans-serif;
 	background-color: #202020;
-	max-width:300px;
+	max-width: 300px;
 	margin-top: 10px;
 	margin-bottom: 20px;
 	text-align: center;
@@ -243,8 +249,9 @@ body {
 	-moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.85);
 	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.85);
 }
-.top-users-swiper{
-	width:100%;
+
+.top-users-swiper {
+	width: 100%;
 }
 
 .followButton {
@@ -267,17 +274,3 @@ body {
 }
 
 /* INDEX.JSP */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
