@@ -40,5 +40,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("SELECT new com.wlochynski.fashiongram.dto.TopUserDTO(u.userId, u.name, u.avatarUrl, count(f.userId) as numberOfFollowers) FROM User u JOIN Follow f on u.userId = f.userId GROUP BY f.userId ORDER BY numberOfFollowers DESC")
 	public List<TopUserDTO> getTopUserDTO(Pageable pageable);
 	
+	@Query("SELECT new com.wlochynski.fashiongram.dto.TopUserDTO(u.userId, u.name, u.avatarUrl, count(f.userId) as numberOfFollowers) FROM User u JOIN Follow f on u.userId = f.userId WHERE u.name LIKE :param GROUP BY f.userId ORDER BY numberOfFollowers DESC")
+	public List<TopUserDTO> getTopUserBySearchParam(@Param("param") String param, Pageable pageable);
 	
+	//SELECT u.user_id, u.name, u.avatar_url, count(f.user_id) as numberOfFollowers FROM User u JOIN Follow f on u.user_id = f.user_id WHERE u.name LIKE '%:as%' GROUP BY f.user_id ORDER BY numberOfFollowers DESC
 }

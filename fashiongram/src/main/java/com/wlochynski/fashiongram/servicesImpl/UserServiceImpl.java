@@ -93,4 +93,10 @@ import com.wlochynski.fashiongram.services.UserService;
 	public List<TopUserDTO> getTopUserDTO(Pageable pageable) {
 		return userRepository.getTopUserDTO(pageable);
 	}
+
+	@Override
+	public List<TopUserDTO> getTopUserBySearchParam(String param, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return userRepository.getTopUserBySearchParam(param, pageable);
+	}
 }

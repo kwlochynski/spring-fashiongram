@@ -19,5 +19,6 @@ public interface UserService {
 	public List<User> findAllById(List<Integer> userIds);
 	public List<User> findAll();
 	public List<TopUserDTO> getTopUserDTO(Pageable pageable);
+	public List<TopUserDTO> getTopUserBySearchParam(String param, Pageable pageable);
 
 }

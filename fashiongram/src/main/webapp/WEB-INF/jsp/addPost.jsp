@@ -28,24 +28,49 @@
 			URL.revokeObjectURL(output.src)
 		}
 	};
+
+	$(document).bind('click', function(e) {
+		  if(!$(e.target).is('#search') && !$(e.target).is('#searchText') && !$(e.target).is('#searchResult')) {
+			  $("#search").html("");
+		  }
+		});
+	
+	function getUsersSearch() {
+		if ($("#searchText").val() != "") {
+			$("#search").html("");
+			$.ajax({
+				url : '/search?param=' + $("#searchText").val(),
+				success : function(data, status) {
+					$(data).appendTo('#search');
+
+				}
+			})
+		} else {
+			$("#search").html("");
+		}
+	}
 </script>
+
 </head>
 
 <body>
 	<div id="nav-placeholder">
 		<ul id="nav_links">
+			<li><input id="searchText" class="searchInput"
+				placeholder="Wyszukaj" type="text" onkeyup="getUsersSearch()">
+				<div id="search" class="searchResults"></div></li>
 			<li><a href="/index" title="Strona główna"><img
-					src="/resources/images/Icons/home.png"></a></li>
+					src="/resources/images/Icons/home.png" class="navImage"></a></li>
 			<li><a href="/top" title="Najpopularniejsze"><img
-					src="/resources/images/Icons/topIcon.png"></a></li>
+					src="/resources/images/Icons/topIcon.png" class="navImage"></a></li>
 			<li><a href="/discover" title="Odkrywaj najnowsze posty"><img
-					src="/resources/images/Icons/discoverIcon.png"></a></li>
+					src="/resources/images/Icons/discoverIcon.png" class="navImage"></a></li>
 			<li><a href="/addPost" title="Dodaj post"><img
-					src="/resources/images/Icons/plus.png"></a></li>
+					src="/resources/images/Icons/plus.png" class="navImage"></a></li>
 			<li><a href="/profile" title="Twój profil"><img
 					class="navAvatar" src="/uploads/${user.avatarUrl }"></a></li>
 			<li><a href="/logout" title="Dodaj post"><img
-					src="/resources/images/Icons/logoutIcon.png"></a></li>
+					src="/resources/images/Icons/logoutIcon.png" class="navImage"></a></li>
 		</ul>
 	</div>
 

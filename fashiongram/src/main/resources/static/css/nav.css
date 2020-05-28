@@ -1,21 +1,74 @@
-#nav-placeholder{
-  z-index:1;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top:0;
-  right: 0;
+#nav-placeholder {
+	z-index: 1;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
+
 #nav-placeholder li {
-  display: inline;
+	display: inline;
 }
-#nav_links img{
-  margin-right: 30px;
-  height:40px;
+
+.navImage {
+	margin-right: 30px;
+	height: 40px;
 }
-.navAvatar{
+
+.navAvatar {
 	border-radius: 50%;
 	object-position: 50% 10%;
 	object-fit: cover;
-	width:40px;
+	width: 40px;
+	margin-right: 30px;
+	height: 40px;
+}
+
+.searchInput {
+	padding: 0;
+	margin: 0;
+	height: 34px;
+	margin-right: 30px;
+	font-family: 'Raleway', sans-serif;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 15px;
+	width: 200px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	transform: translateY(-14px);
+}
+
+.searchResults {
+	display: block;
+	position: absolute;
+	margin: 0;
+	height: 70px;
+	font-family: 'Raleway', sans-serif;
+	width: 220px;
+	color: white;
+
+	transform: translateY(-14px);
+	font-size: 15px;
+	margin-bottom:15px;
+}
+.searchResult{
+	background-color: #252525;
+}
+.searchName{
+	display:block;
+	position:absolute;
+	transform: translateY(-37px);
+	margin-left:70px;
+}
+.searchAvatar {
+	border-radius: 50%;
+	object-position: 50% 10%;
+	object-fit: cover;
+	height: 40px;
+	width: 40px;
+	margin:5px;
+	margin-left:15px;
 }
