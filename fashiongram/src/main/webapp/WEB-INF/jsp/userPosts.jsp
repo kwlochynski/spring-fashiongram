@@ -41,7 +41,7 @@ function addComment(postId) {
 					data : form.serialize(),
 					success : function() {
 					$(
-					"<div class='comment'><img class='commentAvatar' src='/uploads/${user.avatarUrl }'><a id='commentText'> "+ commentContent +" </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
+					"<div class='comment'><img class='commentAvatar' src='/uploads/${loggedUser.avatarUrl }'><a id='commentText'> "+ commentContent +" </a><a id='commentDate'>Dodano: Przed chwilą</a></div>")
 					.prependTo('#comments'+postId);
 					}
 				})
@@ -109,9 +109,7 @@ function addComment(postId) {
 				<div id="search" class="searchResults"></div></li>
 			<li><a href="/index" title="Strona główna"><img
 					src="/resources/images/Icons/home.png" class="navImage"></a></li>
-			<li><a href="/top" title="Najpopularniejsze"><img
-					src="/resources/images/Icons/topIcon.png" class="navImage"></a></li>
-			<li><a href="/discover" title="Odkrywaj najnowsze posty"><img
+			<li><a href="/discover" title="Odkrywaj posty i użytkowników"><img
 					src="/resources/images/Icons/discoverIcon.png" class="navImage"></a></li>
 			<li><a href="/addPost" title="Dodaj post"><img
 					src="/resources/images/Icons/plus.png" class="navImage"></a></li>

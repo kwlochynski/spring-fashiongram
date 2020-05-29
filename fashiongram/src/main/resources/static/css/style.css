@@ -2,16 +2,18 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #252525;
+	overflow-x:hidden;
 }
 
 .box {
 	display: flex;
 	justify-content: center;
 	margin: 0 auto;
-	margin-top: 10vh;
 	margin-bottom: 10vh;
 	height: 80vh;
 	text-align: center;
+	z-index:1;
+	margin-top:10vh; 
 }
 
 #photo {
@@ -235,7 +237,7 @@ body {
 }
 
 .users {
-	margin-top: 200px;
+	margin-top: 100px;
 }
 
 .swiper-slide {

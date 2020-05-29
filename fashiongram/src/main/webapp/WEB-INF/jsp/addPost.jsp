@@ -61,9 +61,7 @@
 				<div id="search" class="searchResults"></div></li>
 			<li><a href="/index" title="Strona główna"><img
 					src="/resources/images/Icons/home.png" class="navImage"></a></li>
-			<li><a href="/top" title="Najpopularniejsze"><img
-					src="/resources/images/Icons/topIcon.png" class="navImage"></a></li>
-			<li><a href="/discover" title="Odkrywaj najnowsze posty"><img
+			<li><a href="/discover" title="Odkrywaj posty i użytkowników"><img
 					src="/resources/images/Icons/discoverIcon.png" class="navImage"></a></li>
 			<li><a href="/addPost" title="Dodaj post"><img
 					src="/resources/images/Icons/plus.png" class="navImage"></a></li>

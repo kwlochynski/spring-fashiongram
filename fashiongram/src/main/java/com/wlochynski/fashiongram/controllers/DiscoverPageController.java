@@ -6,11 +6,13 @@ import java.util.List;
 import javax.ws.rs.GET;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wlochynski.fashiongram.dto.PostLikesDTO;
+import com.wlochynski.fashiongram.dto.TopUserDTO;
 import com.wlochynski.fashiongram.models.Comment;
 import com.wlochynski.fashiongram.models.Post;
 import com.wlochynski.fashiongram.models.User;
@@ -39,10 +41,17 @@ public class DiscoverPageController {
 	@RequestMapping("discover")
 	public String showDiscoverPage(Model model)
 	{
+		//get and add user
 		String userEmail = UserUtilites.getLoggedUser();
 		User user = userService.findUserByEmail(userEmail);
 		model.addAttribute("user", user);
 		
+		//get and add top users
+		List<TopUserDTO> topUsersByFollowers = userService.getTopUserDTO(PageRequest.of(0, 20));
+		model.addAttribute("topUsersByFollowers", topUsersByFollowers);
+		
+		
+		//get and add newest posts
 		List<Post> newPosts = postService.findAllByOrderByIdDesc();
 
 		List<Integer> userIds = new ArrayList<Integer>();
