@@ -37,7 +37,7 @@
 			<font color="red" size="3"><s:message code="error.logowanie"/></font>
 		  </c:if>
 
-	      <p class="loginText">Login lub e-mail:</p>
+	      <p class="loginText">E-mail:</p>
 	      <input class="loginInput" placeholder="Login lub e-mail" name="email" type="text">
 
 	      <p class="loginText">Hasło:</p>
@@ -71,7 +71,7 @@
           <p class="loginText">Email:</p>
           <sf:input path="email" class="loginInput" placeholder="Email" type="text"/>
           <font color="red" size="4"><sf:errors path="email"/></font>
-          <p class="loginText">Powtórz hasło:</p>
+          <p class="loginText">Hasło:</p>
           <sf:input path="password" class="loginInput" placeholder="Hasło" type="password"/>
           <font color="red" size="4"><sf:errors path="password"/></font>
           <div>

@@ -238,6 +238,8 @@ body {
 
 .users {
 	margin-top: 100px;
+	position:relative;
+	z-index:-1;
 }
 
 .swiper-slide {
