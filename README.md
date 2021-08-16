@@ -1,5 +1,5 @@
 # Fashiongram
-Social networking website
+Social networking web app
 
 ## Table of contents
 * [General info](#general-info)
@@ -52,4 +52,6 @@ Fashiongram is a social networking website which allows users to:
 
 ## To-do
 * site responsiveness,
-* e-mail verification.
+* e-mail verification,
+* unit tests,
+* anti-bot system.
